@@ -5,3 +5,14 @@ __init__('.')  # 在当前路径下创建 log 目录，文件名 YYYY-MM-DD.log
 调用方法： obj = myLogger('.')
 obj.wt.info("msg")
 obj.wt.de
+
+
+2018.12.18
+MySQL数据库操作 db_operation
+class name : db_ops
+__init__(host='localhost', db='mysql', user='root', pwd=None)
+pwd 不能为空
+调用方法： db = db_ops(host='127.0.0.1', db='stock', user='wx', pwd='5171013')
+db.handle
+db.cursor
+全部封装为 db 内部成员变量
