@@ -1,0 +1,6 @@
+日志库 logger_package
+class name : myLogger
+__init__('.')  # 在当前路径下创建 log 目录，文件名 YYYY-MM-DD.log
+调用方法： obj = myLogger('.')
+obj.wt.info("msg")
+obj.wt.de
