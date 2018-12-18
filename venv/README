@@ -1,3 +1,4 @@
+2018.12.18
 日志库 logger_package
 class name : myLogger
 __init__('.')  # 在当前路径下创建 log 目录，文件名 YYYY-MM-DD.log
