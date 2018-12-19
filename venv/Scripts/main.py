@@ -1,23 +1,31 @@
 # from filePackage import MyFile
 # from logger_package import myLogger
-from db_package import db_ops
+# from db_package import db_ops
+from stock_package import ts_data, sz_web_data, sh_web_data
 import sys
 import os
 
 if __name__ == '__main__':
-    try:
-        db = db_ops(host='127.0.0.1', db='stock', user='wx', pwd='5171013')
-        sql = "SELECT COUNT(*) FROM LIST_A "
-        db.cursor.execute(sql)
-        db.handle.commit()
-        result = db.cursor.fetchall()
-        print(result)
+    stock = ts_data()
+    data = stock.basic_info()
+    print(data)
+    pass
+"""
+# MySQL 测试代码
+try:
+    db = db_ops(host='127.0.0.1', db='stock', user='wx', pwd='5171013')
+    sql = "SELECT ID FROM LIST_A "
+    db.cursor.execute(sql)
+    db.handle.commit()
+    result = db.cursor.fetchall()
+    for _ in result:
+        print(_[0])
 
-        db.cursor.close()
-        db.handle.close()
-    except Exception as e:
-        print("Err occured {}".format(e))
-
+    db.cursor.close()
+    db.handle.close()
+except Exception as e:
+    print("Err occured {}".format(e))
+"""
 
 
 """
