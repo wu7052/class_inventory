@@ -46,12 +46,12 @@ class myLogger():
             'filters': {},
             'handlers': {
                 'console': {
-                    'level': 'DEBUG',
+                    'level': 'INFO',
                     'class': 'logging.StreamHandler',  # 打印到屏幕
                     'formatter': 'simple'
                 },
                 'default': {
-                    'level': 'DEBUG',
+                    'level': 'INFO',
                     'class': 'logging.handlers.RotatingFileHandler',  # 保存到文件
                     'filename': self.logfile_path,  # 日志文件
                     'maxBytes': 1024*1024*5,  # 日志大小 5M

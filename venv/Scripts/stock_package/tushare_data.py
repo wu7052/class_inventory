@@ -7,5 +7,6 @@ class ts_data:
 
 
     def basic_info(self):
-        data = self.ts.stock_basic(exchange='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date')
+        data = self.ts.stock_basic(exchange='', list_status='L', fields='symbol,name,area,industry,list_date')
+        # data = self.ts.stock_basic(exchange='', list_status='L', fields='ts_code,symbol,name,area,industry,list_date')
         return data
