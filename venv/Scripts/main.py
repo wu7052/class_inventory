@@ -4,23 +4,25 @@ from db_package import db_ops
 from stock_package import ts_data, sz_web_data, sh_web_data
 import sys
 import os
-
-
+import pandas as pd
 
 if __name__ == '__main__':
     # print("@__init__ sys.path", sys.path)
     sh_data = sh_web_data()
     # sh_data.logger.wt.debug("calling from main")
+    """
     page_counter =1
-    url = 'http://query.sse.com.cn/security/stock/getStockListData2.do?&jsonCallBack=jsonpCallback99887&' \
+    sh_basic_list_url = 'http://query.sse.com.cn/security/stock/getStockListData2.do?&jsonCallBack=jsonpCallback99887&' \
           'isPagination=true&stockCode=&csrcCode=&areaName=&stockType=1&pageHelp.cacheSize=1&pageHelp.beginPage=' \
           + str(page_counter) + '&pageHelp.pageSize=25&pageHelp.pageNo=' + str(page_counter) + \
           '&pageHelp.endPage=' + str(page_counter) + '1&_=1517320503161' + str(page_counter)
-    json_str = sh_data.get_json_str(url)
+    json_str = sh_data.get_json_str(sh_basic_list_url)
     json_str = '{"content":' + json_str[19:-1] + '}'
-    df = sh_data.json_parse(json_str)
-    sh_data.logger.wt.info(df)
-    # print(json_str)
+    basic_info_df = sh_data.basic_info_json_parse(json_str)
+    sh_data.logger.wt.info(basic_info_df)
+    """
+    sh_data.industry_df_build()
+    sh_data.logger.wt.info("Return from [industry_df_build]\n{}".format(sh_data.industry_df))
     pass
 
     # stock = ts_data()
@@ -57,7 +59,6 @@ except Exception as e:
     print("Err occured {}".format(e))
 """
 
-
 """
 # MyFile 测试代码
 #a = file_class.MyFile("./filePackage/test.txt")
@@ -66,8 +67,6 @@ a.printFilePath()
 a.testWriteFile()
 a.testReadFile()
 """
-
-
 
 # workpath = os.path.dirname(os.path.abspath(sys.argv[0]))
 # pack_name = ['logger_package','stock_package','filePackage','db_package']
@@ -82,8 +81,8 @@ a.testReadFile()
 # path= sys.path
 # print (path)
 
-#path = sys.argv[0]
-#print (sys.argv[0])
-#print (os.path.abspath(sys.argv[0]))
-#workpath = os.path.dirname(os.path.abspath(sys.argv[0]))
-#sys.path.insert(0, os.path.join(workpath, 'modules'))
+# path = sys.argv[0]
+# print (sys.argv[0])
+# print (os.path.abspath(sys.argv[0]))
+# workpath = os.path.dirname(os.path.abspath(sys.argv[0]))
+# sys.path.insert(0, os.path.join(workpath, 'modules'))

@@ -11,8 +11,60 @@ class sh_web_data(ex_web_data):
         ex_web_data.__init__(self)
         # self.logger = ex_data.logger
 
-    def json_parse(self, json_str=None):
-        self.logger.wt.info("start to parse Page Data ...\n")
+    def industry_df_build(self):
+        industry_dict = {'A': u'农、林、牧、渔业', 'B': u'采矿业', 'C': u'制造业',
+                         'D': u'电力、热力、燃气及水生产和供应业', 'E': u'建筑业',
+                         'F': u'批发和零售业', 'G': u'交通运输、仓储和邮政业',
+                         'H': u'住宿和餐饮业', 'I': u'信息传输、软件和信息技术服务业',
+                         'J': u'金融业', 'K': u'房地产业', 'L': u'租赁和商务服务业',
+                         'M': u'科学研究和技术服务业', 'N': u'水利、环境和公共设施管理业',
+                         'O': u'居民服务、修理和其他服务业', 'P': u'教育',
+                         'Q': u'卫生和社会工作', 'R': u'文化、体育和娱乐业', 'S': '综合'}
+
+        self.industry_df = pd.DataFrame()
+
+        for key in industry_dict.keys():
+            # sh_data.logger.wt.info("key:{}==> industry:{}".format(key, industry_dict[key]))
+            sh_industry_list_url = 'http://query.sse.com.cn/security/stock/queryIndustryIndex.do?&' \
+                                   'jsonCallBack=jsonpCallback61167&isPagination=false&' \
+                                   'csrcName=' + self.url_encode(industry_dict[key]) + \
+                                   '&csrcCode=' + key + '&_=1545309860667'
+            # sh_data.logger.wt.info(sh_industry_list_url)
+            json_str = self.get_json_str(sh_industry_list_url)
+            # sh_data.logger.wt.info(json_str[19:-1])
+            cur_df = self.industry_info_json_parse(json_str[19:-1])
+            cur_df['industry'] = industry_dict[key]
+
+            if self.industry_df.size > 0:
+                self.industry_df = pd.concat([self.industry_df, cur_df])  # 连接多个页面的 Dataframe
+                # sh_data.logger.wt.info("{}\n{}".format(industry_dict[key], cur_df))
+                # print(cur_df)
+            else:
+                self.industry_df = cur_df
+        return 1
+
+
+
+    def industry_info_json_parse(self, json_str=None):
+        # self.logger.wt.info("start to parse INDUSTRY INFO ...\n")
+        if json_str is not None:
+            json_obj = json.loads(json_str)
+            company_code = jsonpath(json_obj, '$..result..companycode')  # 公司/A股代码
+            company_fname = jsonpath(json_obj, '$..result..fullname')  # 公司全名
+            industry_matix = [company_code, company_fname]
+            df = pd.DataFrame(industry_matix)
+            df1 = df.T
+            df1.rename(columns={0: 'ID', 1: 'Name'}, inplace=True)
+            # df1.sort_values(by=['Total Shares'], inplace=True)
+            # print(df1.describe())
+            # print(df1)
+            return df1
+        else:
+            self.logger.wt.info("json string is Null , exit ...\n")
+            return None
+
+    def basic_info_json_parse(self, json_str=None):
+        self.logger.wt.info("start to parse BASIC INFO ...\n")
         if json_str is not None:
             json_obj = json.loads(json_str)
             company_code = jsonpath(json_obj, '$..pageHelp..COMPANY_CODE')  # 公司/A股代码

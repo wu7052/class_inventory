@@ -5,6 +5,7 @@ import requests
 import chardet
 import logging
 import os
+from urllib import parse
 
 
 class ex_web_data(object):
@@ -13,6 +14,9 @@ class ex_web_data(object):
         log_dir = os.path.abspath('.')
         self.logger = myLogger(log_dir)
         # self.logger.wt.info("calling logger from Father Class ex_web_data")
+
+    def url_encode(self, str):
+        return parse.quote(str)
 
     def get_json_str(self, url):
         header = {
