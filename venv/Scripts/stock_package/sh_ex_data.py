@@ -54,7 +54,7 @@ class sh_web_data(ex_web_data):
             industry_matix = [company_code, company_fname]
             df = pd.DataFrame(industry_matix)
             df1 = df.T
-            df1.rename(columns={0: 'ID', 1: 'Name'}, inplace=True)
+            df1.rename(columns={0: 'ID', 1: 'F_Name'}, inplace=True)
             # df1.sort_values(by=['Total Shares'], inplace=True)
             # print(df1.describe())
             # print(df1)

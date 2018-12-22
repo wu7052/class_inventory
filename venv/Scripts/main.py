@@ -9,26 +9,61 @@ import pandas as pd
 if __name__ == '__main__':
     # print("@__init__ sys.path", sys.path)
     sh_data = sh_web_data()
-    # sh_data.logger.wt.debug("calling from main")
-    """
-    page_counter =1
-    sh_basic_list_url = 'http://query.sse.com.cn/security/stock/getStockListData2.do?&jsonCallBack=jsonpCallback99887&' \
-          'isPagination=true&stockCode=&csrcCode=&areaName=&stockType=1&pageHelp.cacheSize=1&pageHelp.beginPage=' \
-          + str(page_counter) + '&pageHelp.pageSize=25&pageHelp.pageNo=' + str(page_counter) + \
-          '&pageHelp.endPage=' + str(page_counter) + '1&_=1517320503161' + str(page_counter)
-    json_str = sh_data.get_json_str(sh_basic_list_url)
-    json_str = '{"content":' + json_str[19:-1] + '}'
-    basic_info_df = sh_data.basic_info_json_parse(json_str)
-    sh_data.logger.wt.info(basic_info_df)
-    """
-    sh_data.industry_df_build()
-    sh_data.logger.wt.info("Return from [industry_df_build]\n{}".format(sh_data.industry_df))
-    pass
+    sh_data.industry_df_build() # 沪市股票 所属的行业类型、公司全称
+    # sh_data.logger.wt.info("Return from [industry_df_build]\n{}".format(sh_data.industry_df))
 
-    # stock = ts_data()
-    # data = stock.basic_info()
-    # print(data)
-    # pass
+    db = db_ops(host='127.0.0.1', db='stock', user='wx', pwd='5171013')
+
+    page_counter = 1
+
+    while True:
+        sh_basic_list_url = 'http://query.sse.com.cn/security/stock/getStockListData2.do?&jsonCallBack=jsonpCallback99887&' \
+              'isPagination=true&stockCode=&csrcCode=&areaName=&stockType=1&pageHelp.cacheSize=1&pageHelp.beginPage=' \
+              + str(page_counter) + '&pageHelp.pageSize=25&pageHelp.pageNo=' + str(page_counter) + \
+              '&pageHelp.endPage=' + str(page_counter) + '1&_=1517320503161' + str(page_counter)
+        json_str = sh_data.get_json_str(sh_basic_list_url)
+        json_str = '{"content":' + json_str[19:-1] + '}'
+        basic_info_df = sh_data.basic_info_json_parse(json_str)
+        # sh_data.logger.wt.info(basic_info_df)
+
+        # 基本信息 与 所属行业 合并
+        basic_info_df = pd.merge(basic_info_df, sh_data.industry_df, how='left', left_on='ID', right_on='ID')
+        sh_data.logger.wt.info("Total Page:{}---{}\n========================================"
+                               .format(sh_data.total_page, page_counter))
+        # sh_data.logger.wt.info("Total Page:{}---{}\n{}".format(sh_data.total_page, page_counter, basic_info_df))
+
+        for array in basic_info_df.get_values():
+            sql = "select * from list_a where id ='"+array[0]+"'"
+            # sql =  'select count(*) from list_a where id = \'%s\''%array[0]
+            iCount = db.cursor.execute(sql) # 返回值，受影响的行数， 不需要 fetchall 来读取了
+            if iCount == 0:
+                sql ="insert into list_a (id, name, total_shares, flow_shares, list_date, full_name, industry) " \
+                     "values (%s, %s, %s ,%s, %s, %s, %s)"
+                sh_data.logger.wt.info("Insert id={0}, name={1}, t_shares={2}, f_shares={3}, date={4}".
+                             format(array[0], array[1], array[2], array[3],array[4]), array[5], array[6])
+                db.cursor.execute(sql,(array[0], array[1], float(array[2]), float(array[3]), array[4], array[5], array[6]))
+                db.handle.commit()
+            elif iCount == 1:
+                sh_data.logger.wt.info("Existed\t[{0}==>{1}]".format(array[0], array[1]))
+            else:
+                sh_data.logger.wt.info("iCount == %d , what happended ???"% iCount)
+
+        page_counter += 1
+        if page_counter > int(sh_data.total_page[0]):
+            break
+        else:
+            continue
+
+
+    db.cursor.close()
+    db.handle.close()
+
+"""
+# stock = ts_data()
+# data = stock.basic_info()
+# print(data)
+# pass
+"""
 
 """
 # Logger 测试代码

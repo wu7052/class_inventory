@@ -24,3 +24,6 @@ ts_data 类： 处理tushare包的数据
 sh_web_data 类：处理 上证网站 的数据
 sz_web_data 类：处理 深证网站 的数据
 ex_web_data 类：是 sh_web_data, sz_web_data 的父类，包含一些 json 的处理函数
+
+2018.12.21
+sh_web_data: 增加 行业类型 的数据，从web页面抓取到 DataFrame
