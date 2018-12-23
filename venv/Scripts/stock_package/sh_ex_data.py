@@ -34,6 +34,8 @@ class sh_web_data(ex_web_data):
             # sh_data.logger.wt.info(json_str[19:-1])
             cur_df = self.industry_info_json_parse(json_str[19:-1])
             cur_df['industry'] = industry_dict[key]
+            cur_df['industry_code'] = key  # 沪深两市使用统一的 行业类别 代码
+
 
             if self.industry_df.size > 0:
                 self.industry_df = pd.concat([self.industry_df, cur_df])  # 连接多个页面的 Dataframe

@@ -1,4 +1,5 @@
 from logger_package import myLogger
+from db_package import db_ops
 
 import urllib3
 import requests
@@ -14,14 +15,39 @@ class ex_web_data(object):
         log_dir = os.path.abspath('.')
         self.logger = myLogger(log_dir)
         # self.logger.wt.info("calling logger from Father Class ex_web_data")
+        self.db = db_ops(host='127.0.0.1', db='stock', user='wx', pwd='5171013')
+
+    def __del__(self):
+        self.db.cursor.close()
+        self.db.handle.close()
+        self.logger.wt.info("{} Destoried".format(self))
 
     def url_encode(self, str):
         return parse.quote(str)
 
+    def db_load_into_list_a(self, basic_info_df):
+        for array in basic_info_df.get_values():
+            sql = "select * from list_a where id ='" + array[0] + "'"
+            # sql =  'select count(*) from list_a where id = \'%s\''%array[0]
+            iCount = self.db.cursor.execute(sql)  # 返回值，受影响的行数， 不需要 fetchall 来读取了
+            if iCount == 0:
+                sql = "insert into list_a (id, name, total_shares, flow_shares, list_date, full_name, industry, industry_code) " \
+                      "values (%s, %s, %s ,%s, %s, %s, %s, %s)"
+                self.logger.wt.info(
+                    "Insert id={0}, name={1}, t_shares={2}, f_shares={3}, date={4}, f_name={5}, industry={6}, industry_code={7}".
+                    format(array[0], array[1], array[2], array[3], array[4], array[5], array[6], array[7]))
+                self.db.cursor.execute(sql, (
+                array[0], array[1], float(array[2]), float(array[3]), array[4], array[5], array[6], array[7]))
+                self.db.handle.commit()
+            elif iCount == 1:
+                self.logger.wt.info("Existed\t[{0}==>{1}]".format(array[0], array[1]))
+            else:
+                self.logger.wt.info("iCount == %d , what happended ???" % iCount)
+
+
     def get_json_str(self, url):
         header = {
-            'User-Agent': r'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',
-            'Referer': r'https://www.jianshu.com/c/20f7f4031550?utm_medium=index-collections&utm_source=desktop',
+            'User-Agent': r'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.80 Safari/537.36',
             'Connection': 'keep-alive'
         }
 
@@ -34,7 +60,7 @@ class ex_web_data(object):
         requests.packages.urllib3.disable_warnings()
         http = urllib3.PoolManager()
         try:
-            raw_data = http.request('GET', url, headers=headers)
+            raw_data = http.request('GET', url, headers=header)
         except Exception as e:
             raise e
         finally:

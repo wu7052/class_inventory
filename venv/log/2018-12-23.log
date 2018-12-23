@@ -1,264 +1,64 @@
-[2018-12-23 00:18:48][MainThread:17404][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
+[2018-12-23 21:51:54][MainThread:7588][task_id:logger][sz_ex_data.py:15][INFO][start to parse BASIC INFO ...
 ]
-[2018-12-23 00:18:48][MainThread:17404][task_id:logger][main.py:31][INFO][========================================]
-[2018-12-23 00:18:48][MainThread:17404][task_id:logger][main.py:32][INFO][Total Page:[58]---1
-        ID  Name        ...                   F_Name          industry
-0   600000  浦发银行        ...           上海浦东发展银行股份有限公司               金融业
-1   600004  白云机场        ...           广州白云国际机场股份有限公司       交通运输、仓储和邮政业
-2   600006  东风汽车        ...               东风汽车股份有限公司               制造业
-3   600007  中国国贸        ...           中国国际贸易中心股份有限公司              房地产业
-4   600008  首创股份        ...               北京首创股份有限公司  电力、热力、燃气及水生产和供应业
-5   600009  上海机场        ...             上海国际机场股份有限公司       交通运输、仓储和邮政业
-6   600010  包钢股份        ...            内蒙古包钢钢联股份有限公司               制造业
-7   600011  华能国际        ...             华能国际电力股份有限公司  电力、热力、燃气及水生产和供应业
-8   600012  皖通高速        ...           安徽皖通高速公路股份有限公司       交通运输、仓储和邮政业
-9   600015  华夏银行        ...               华夏银行股份有限公司               金融业
-10  600016  民生银行        ...             中国民生银行股份有限公司               金融业
-11  600017   日照港        ...                日照港股份有限公司       交通运输、仓储和邮政业
-12  600018  上港集团        ...         上海国际港务（集团）股份有限公司       交通运输、仓储和邮政业
-13  600019  宝钢股份        ...               宝山钢铁股份有限公司               制造业
-14  600020  中原高速        ...           河南中原高速公路股份有限公司       交通运输、仓储和邮政业
-15  600021  上海电力        ...               上海电力股份有限公司  电力、热力、燃气及水生产和供应业
-16  600022  山东钢铁        ...               山东钢铁股份有限公司               制造业
-17  600023  浙能电力        ...             浙江浙能电力股份有限公司  电力、热力、燃气及水生产和供应业
-18  600025  华能水电        ...            华能澜沧江水电股份有限公司  电力、热力、燃气及水生产和供应业
-19  600026  中远海能        ...           中远海运能源运输股份有限公司       交通运输、仓储和邮政业
-20  600027  华电国际        ...             华电国际电力股份有限公司  电力、热力、燃气及水生产和供应业
-21  600028  中国石化        ...             中国石油化工股份有限公司               采矿业
-22  600029  南方航空        ...             中国南方航空股份有限公司       交通运输、仓储和邮政业
-23  600030  中信证券        ...               中信证券股份有限公司               金融业
-24  600031  三一重工        ...               三一重工股份有限公司               制造业
+[2018-12-23 21:52:16][MainThread:14908][task_id:logger][sz_ex_data.py:15][INFO][start to parse BASIC INFO ...
+]
+[2018-12-23 21:53:00][MainThread:412][task_id:logger][sz_ex_data.py:15][INFO][start to parse BASIC INFO ...
+]
+[2018-12-23 21:53:17][MainThread:19028][task_id:logger][sz_ex_data.py:15][INFO][start to parse BASIC INFO ...
+]
+[2018-12-23 21:53:17][MainThread:19028][task_id:logger][main.py:21][INFO][
+        ID   Name Total Shares      ...        List_Date Industry Industry_code
+0   000025  特  力Ａ        27000      ...       1993-06-21   F 批发零售             F
+1   000026   飞亚达Ａ        35700      ...       1993-06-03   F 批发零售             F
+2   000027   深圳能源       396400      ...       1993-09-03   D 水电煤气             D
+3   000028   国药一致        37300      ...       1993-08-09   F 批发零售             F
+4   000029   深深房Ａ        89100      ...       1993-09-15    K 房地产             K
+5   000030   富奥股份       176200      ...       1993-09-29    C 制造业             C
+6   000031   中粮地产       181300      ...       1993-10-08    K 房地产             K
+7   000032   深桑达Ａ        41300      ...       1993-10-28   F 批发零售             F
+8   000034   神州数码        65400      ...       1994-05-09   F 批发零售             F
+9   000035   中国天楹       135100      ...       1994-04-08   N 公共环保             N
+10  000036   华联控股       114100      ...       1994-06-17    K 房地产             K
+11  000037   深南电A        33800      ...       1994-07-01   D 水电煤气             D
+12  000038    深大通        52200      ...       1994-08-08   L 商务服务             L
+13  000039   中集集团       126800      ...       1994-04-08    C 制造业             C
+14  000040   东旭蓝天       148600      ...       1994-08-08   D 水电煤气             D
+15  000042   中洲控股        66400      ...       1994-09-21    K 房地产             K
+16  000043   中航善达        66600      ...       1994-09-28    K 房地产             K
+17  000045   深纺织Ａ        46100      ...       1994-08-15    C 制造业             C
+18  000046   泛海控股       519600      ...       1994-09-12    K 房地产             K
+19  000048  *ST康达        39000      ...       1994-11-01    C 制造业             C
 
-[25 rows x 7 columns]]
-[2018-12-23 00:21:06][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
+[20 rows x 7 columns]]
+[2018-12-23 22:19:32][MainThread:7232][task_id:logger][sz_ex_data.py:15][INFO][start to parse BASIC INFO ...
 ]
-[2018-12-23 00:21:06][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---1
-========================================]
-[2018-12-23 00:21:07][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
+[2018-12-23 22:21:35][MainThread:11300][task_id:logger][sz_ex_data.py:15][INFO][start to parse BASIC INFO ...
 ]
-[2018-12-23 00:21:07][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---2
-========================================]
-[2018-12-23 00:21:07][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
+[2018-12-23 22:22:27][MainThread:19888][task_id:logger][sz_ex_data.py:15][INFO][start to parse BASIC INFO ...
 ]
-[2018-12-23 00:21:07][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---3
-========================================]
-[2018-12-23 00:21:08][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
+[2018-12-23 22:29:29][MainThread:14460][task_id:logger][sz_ex_data.py:15][INFO][start to parse BASIC INFO ...
 ]
-[2018-12-23 00:21:08][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---4
-========================================]
-[2018-12-23 00:21:08][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
+[2018-12-23 22:29:47][MainThread:14460][task_id:logger][ex_data.py:38][INFO][Insert id=000025, name=特  力Ａ, t_shares=27000.0, f_shares=27000.0, date=1993-06-21, f_name=特  力Ａ, industry=F 批发零售, industry_code=F]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][sz_ex_data.py:15][INFO][start to parse BASIC INFO ...
 ]
-[2018-12-23 00:21:08][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---5
-========================================]
-[2018-12-23 00:21:09][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:09][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---6
-========================================]
-[2018-12-23 00:21:10][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:10][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---7
-========================================]
-[2018-12-23 00:21:10][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:10][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---8
-========================================]
-[2018-12-23 00:21:11][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:11][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---9
-========================================]
-[2018-12-23 00:21:11][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:12][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---10
-========================================]
-[2018-12-23 00:21:12][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:12][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---11
-========================================]
-[2018-12-23 00:21:13][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:13][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---12
-========================================]
-[2018-12-23 00:21:13][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:13][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---13
-========================================]
-[2018-12-23 00:21:14][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:14][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---14
-========================================]
-[2018-12-23 00:21:15][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:15][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---15
-========================================]
-[2018-12-23 00:21:15][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:15][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---16
-========================================]
-[2018-12-23 00:21:16][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:16][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---17
-========================================]
-[2018-12-23 00:21:16][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:16][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---18
-========================================]
-[2018-12-23 00:21:17][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:17][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---19
-========================================]
-[2018-12-23 00:21:18][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:18][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---20
-========================================]
-[2018-12-23 00:21:18][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:18][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---21
-========================================]
-[2018-12-23 00:21:19][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:19][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---22
-========================================]
-[2018-12-23 00:21:19][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:19][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---23
-========================================]
-[2018-12-23 00:21:20][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:20][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---24
-========================================]
-[2018-12-23 00:21:21][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:21][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---25
-========================================]
-[2018-12-23 00:21:21][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:21][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---26
-========================================]
-[2018-12-23 00:21:22][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:22][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---27
-========================================]
-[2018-12-23 00:21:22][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:22][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---28
-========================================]
-[2018-12-23 00:21:23][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:23][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---29
-========================================]
-[2018-12-23 00:21:23][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:23][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---30
-========================================]
-[2018-12-23 00:21:24][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:24][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---31
-========================================]
-[2018-12-23 00:21:25][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:25][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---32
-========================================]
-[2018-12-23 00:21:25][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:25][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---33
-========================================]
-[2018-12-23 00:21:26][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:26][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---34
-========================================]
-[2018-12-23 00:21:26][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:26][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---35
-========================================]
-[2018-12-23 00:21:27][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:27][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---36
-========================================]
-[2018-12-23 00:21:27][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:27][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---37
-========================================]
-[2018-12-23 00:21:28][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:28][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---38
-========================================]
-[2018-12-23 00:21:28][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:28][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---39
-========================================]
-[2018-12-23 00:21:29][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:29][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---40
-========================================]
-[2018-12-23 00:21:30][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:30][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---41
-========================================]
-[2018-12-23 00:21:30][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:30][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---42
-========================================]
-[2018-12-23 00:21:31][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:31][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---43
-========================================]
-[2018-12-23 00:21:31][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:31][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---44
-========================================]
-[2018-12-23 00:21:32][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:32][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---45
-========================================]
-[2018-12-23 00:21:33][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:33][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---46
-========================================]
-[2018-12-23 00:21:33][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:33][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---47
-========================================]
-[2018-12-23 00:21:34][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:34][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---48
-========================================]
-[2018-12-23 00:21:35][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:35][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---49
-========================================]
-[2018-12-23 00:21:35][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:35][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---50
-========================================]
-[2018-12-23 00:21:36][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:36][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---51
-========================================]
-[2018-12-23 00:21:36][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:36][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---52
-========================================]
-[2018-12-23 00:21:37][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:37][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---53
-========================================]
-[2018-12-23 00:21:37][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:38][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---54
-========================================]
-[2018-12-23 00:21:38][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:38][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---55
-========================================]
-[2018-12-23 00:21:39][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:39][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---56
-========================================]
-[2018-12-23 00:21:39][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:39][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---57
-========================================]
-[2018-12-23 00:21:40][MainThread:4888][task_id:logger][sh_ex_data.py:67][INFO][start to parse BASIC INFO ...
-]
-[2018-12-23 00:21:40][MainThread:4888][task_id:logger][main.py:32][INFO][Total Page:[58]---58
-========================================]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:43][INFO][Existed	[000025==>特  力Ａ]]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000026, name=飞亚达Ａ, t_shares=35700.0, f_shares=35600.0, date=1993-06-03, f_name=飞亚达Ａ, industry=F 批发零售, industry_code=F]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000027, name=深圳能源, t_shares=396400.0, f_shares=396400.0, date=1993-09-03, f_name=深圳能源, industry=D 水电煤气, industry_code=D]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000028, name=国药一致, t_shares=37300.0, f_shares=30700.0, date=1993-08-09, f_name=国药一致, industry=F 批发零售, industry_code=F]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000029, name=深深房Ａ, t_shares=89100.0, f_shares=89100.0, date=1993-09-15, f_name=深深房Ａ, industry=K 房地产, industry_code=K]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000030, name=富奥股份, t_shares=176200.0, f_shares=175600.0, date=1993-09-29, f_name=富奥股份, industry=C 制造业, industry_code=C]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000031, name=中粮地产, t_shares=181300.0, f_shares=181300.0, date=1993-10-08, f_name=中粮地产, industry=K 房地产, industry_code=K]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000032, name=深桑达Ａ, t_shares=41300.0, f_shares=27900.0, date=1993-10-28, f_name=深桑达Ａ, industry=F 批发零售, industry_code=F]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000034, name=神州数码, t_shares=65400.0, f_shares=35700.0, date=1994-05-09, f_name=神州数码, industry=F 批发零售, industry_code=F]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000035, name=中国天楹, t_shares=135100.0, f_shares=128100.0, date=1994-04-08, f_name=中国天楹, industry=N 公共环保, industry_code=N]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000036, name=华联控股, t_shares=114100.0, f_shares=113500.0, date=1994-06-17, f_name=华联控股, industry=K 房地产, industry_code=K]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000037, name=深南电A, t_shares=33800.0, f_shares=33800.0, date=1994-07-01, f_name=深南电A, industry=D 水电煤气, industry_code=D]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000038, name=深大通, t_shares=52200.0, f_shares=17800.0, date=1994-08-08, f_name=深大通, industry=L 商务服务, industry_code=L]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000039, name=中集集团, t_shares=126800.0, f_shares=126700.0, date=1994-04-08, f_name=中集集团, industry=C 制造业, industry_code=C]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000040, name=东旭蓝天, t_shares=148600.0, f_shares=106000.0, date=1994-08-08, f_name=东旭蓝天, industry=D 水电煤气, industry_code=D]
+[2018-12-23 22:30:03][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000042, name=中洲控股, t_shares=66400.0, f_shares=48500.0, date=1994-09-21, f_name=中洲控股, industry=K 房地产, industry_code=K]
+[2018-12-23 22:30:04][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000043, name=中航善达, t_shares=66600.0, f_shares=66600.0, date=1994-09-28, f_name=中航善达, industry=K 房地产, industry_code=K]
+[2018-12-23 22:30:04][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000045, name=深纺织Ａ, t_shares=46100.0, f_shares=45700.0, date=1994-08-15, f_name=深纺织Ａ, industry=C 制造业, industry_code=C]
+[2018-12-23 22:30:04][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000046, name=泛海控股, t_shares=519600.0, f_shares=507800.0, date=1994-09-12, f_name=泛海控股, industry=K 房地产, industry_code=K]
+[2018-12-23 22:30:04][MainThread:9408][task_id:logger][ex_data.py:38][INFO][Insert id=000048, name=*ST康达, t_shares=39000.0, f_shares=38300.0, date=1994-11-01, f_name=*ST康达, industry=C 制造业, industry_code=C]
+[2018-12-23 22:30:04][MainThread:9408][task_id:logger][ex_data.py:23][INFO][<sz_ex_data.sz_web_data object at 0x044703F0> Destoried]
