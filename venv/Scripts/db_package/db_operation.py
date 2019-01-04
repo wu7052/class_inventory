@@ -1,6 +1,5 @@
 import pymysql
 
-
 class db_ops:
     def __init__(self, host='localhost', db='mysql', user='root', pwd=None):
 
@@ -26,4 +25,4 @@ class db_ops:
                 self.cursor = self.handle.cursor()
         except Exception as e:
             print("Err occured in DB_OP __init__{}".format(e))
-            exit(-1)
+            raise e
