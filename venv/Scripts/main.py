@@ -8,7 +8,7 @@ wx = lg.get_handle()
 
 from functions import *
 
-update_daily_data_from_ts()
+update_daily_data_from_ts(period = -200)
 
 # update_sz_basic_info()
 # wx.info("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")

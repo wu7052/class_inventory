@@ -23,11 +23,12 @@ class ts_data:
 
     def acquire_daily_data(self, code, period):
         wx = lg.get_handle()
+        wx.info("tushare called {} times，id: {}".format(ts_data.__counter, code))
         if (ts_data.__counter == 1):  # 第一次调用，会重置 计时器
             ts_data.__timer = time.time()
         if (ts_data.__counter == 200): # 达到 200 次调用，需要判断与第一次调用的时间间隔
             ts_data.__counter = 0      # 重置计数器=0，下面立即调用一次 计数器+1
-            wait_sec = 60 - (int)(time.time() - ts_data.__timer) # 计算时间差
+            wait_sec = 63 - (int)(time.time() - ts_data.__timer) # 计算时间差
             # ts_data.__timer = time.time() # 重置计时器
             if (wait_sec > 0):
                 wx.info("REACH THE LIMIT, MUST WAIT ({}) SECONDS".format(wait_sec))
@@ -36,7 +37,13 @@ class ts_data:
 
         end_date = date.today().strftime('%Y%m%d')
         start_date = (date.today() + timedelta(days = period)).strftime('%Y%m%d')
-        df = self.ts.query('daily', ts_code=code, start_date=start_date, end_date=end_date)
+        try:
+            df = self.ts.query('daily', ts_code=code, start_date=start_date, end_date=end_date)
+        except Exception as e:
+            wx.info("tushare exception: {}... sleep 60 seconds, retry....".format(e))
+            time.sleep(60)
+            df = self.ts.query('daily', ts_code=code, start_date=start_date, end_date=end_date)
+            ts_data.__timer = time.time()
+            ts_data.__counter = 0
         ts_data.__counter += 1
-        wx.info("tushare call {} times，id: {}".format(ts_data.__counter, code))
         return df
