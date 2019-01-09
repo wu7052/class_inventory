@@ -6,9 +6,34 @@ import sys
 import os
 import pandas as pd
 from datetime import datetime
+import time
 import new_logger as lg
 
 
+# 计时器 装饰器
+def wx_timer(func):
+    def wrapper(*args, ** kwargs):
+        wx = lg.get_handle()
+        start_time = time.time()
+        func(*args, **kwargs)
+        time_used = time.time() - start_time
+        # print("{} used {} seconds".format(func.__name__, time_used))
+        wx.info("{} used {} seconds".format(func.__name__, time_used))
+    return wrapper  # 这个语句 不属于 wrapper(), 而是 wx_timer 的返回值. 对应 func 后面这个()调用
+"""
+# 计时器 装饰器
+def wx_timer(func):
+    def wrapper():
+        wx = lg.get_handle()
+        start_time = time.time()
+        func()
+        time_used = time.time() - start_time
+         # print("{} used {} seconds".format(func.__name__, time_used))
+        wx.info("{} used {} seconds".format(func.__name__, time_used))
+    return wrapper
+"""
+
+@wx_timer
 def update_sz_basic_info():
     wx = lg.get_handle()
     sz_data = sz_web_data()
@@ -27,7 +52,8 @@ def update_sz_basic_info():
             wx.info("Total Page:{}---{}\n========================================"
                     .format(sz_data.total_page, page_counter))
 
-            sz_data.db_load_into_list_a(sz_basic_info_df)
+            sz_data.db_load_into_list_a_2(sz_basic_info_df)
+            # sz_data.db_load_into_list_a(sz_basic_info_df)
             page_counter += 1
             if page_counter > int(sz_data.total_page[0]):
                 break
@@ -38,7 +64,7 @@ def update_sz_basic_info():
     finally:
         pass
 
-
+@wx_timer
 def update_sh_basic_info():
     wx = lg.get_handle()
     sh_data = sh_web_data()
@@ -46,7 +72,7 @@ def update_sh_basic_info():
         # 沪市 所有股票的所属行业 DataFrame
         # sh_data = sh_web_data()
         sh_data.industry_df_build()  # 沪市股票 所属的行业类型、公司全称
-        wx.info("Return from [industry_df_build]\n{}".format(sh_data.industry_df))
+        # wx.info("Return from [industry_df_build]\n{}".format(sh_data.industry_df))
 
         # 从Web获取沪市 所有股票的基本信息
         # 从Json读取 股票代码、名称、总股份、流动股份、上市日期
@@ -66,7 +92,8 @@ def update_sh_basic_info():
             wx.info("Total Page:{}---{}\n========================================"
                     .format(sh_data.total_page, page_counter))
 
-            sh_data.db_load_into_list_a(sh_basic_info_df)
+            sh_data.db_load_into_list_a_2(sh_basic_info_df)
+            # sh_data.db_load_into_list_a(sh_basic_info_df)
 
             page_counter += 1
             if page_counter > int(sh_data.total_page[0]):

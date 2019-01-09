@@ -26,14 +26,20 @@ class ts_data:
         wx.info("tushare called {} times，id: {}".format(ts_data.__counter, code))
         if (ts_data.__counter == 1):  # 第一次调用，会重置 计时器
             ts_data.__timer = time.time()
-        if (ts_data.__counter == 200): # 达到 200 次调用，需要判断与第一次调用的时间间隔
+        if (ts_data.__counter >= 200): # 达到 200 次调用，需要判断与第一次调用的时间间隔
             ts_data.__counter = 0      # 重置计数器=0，下面立即调用一次 计数器+1
-            wait_sec = 63 - (int)(time.time() - ts_data.__timer) # 计算时间差
+            wait_sec = 60 - (int)(time.time() - ts_data.__timer) # 计算时间差
             # ts_data.__timer = time.time() # 重置计时器
-            if (wait_sec > 0):
+            if (wait_sec > 0): # 在一分钟内已经累计200次调用，需要停下等待了
                 wx.info("REACH THE LIMIT, MUST WAIT ({}) SECONDS".format(wait_sec))
-                time.sleep(wait_sec)
-                # ts_data.__timer = time.time() # 重置计时器
+                time.sleep(wait_sec+2)
+                # ts_data.__timer = time.time() # 不需要重置计时器，因为上面重置了 计数器，下一次调用时，会重置计时器
+            else:
+                # 累计到 200次 调用，用时已超过1分钟，新的一分钟 怎么计算 200 次调用呢
+                ts_data.__counter = 8 * abs(wait_sec)
+                # ts_data.__timer += 60 + abs(wait_sec)
+                ts_data.__timer = time.time()-abs(wait_sec)
+                wx.info("Called 200 times More than 60 + {} seconds. New timer start at {}".format(abs(wait_sec),ts_data.__timer))
 
         end_date = date.today().strftime('%Y%m%d')
         start_date = (date.today() + timedelta(days = period)).strftime('%Y%m%d')

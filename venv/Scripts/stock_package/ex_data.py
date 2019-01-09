@@ -59,6 +59,25 @@ class ex_web_data(object):
         self.db.handle.commit()
         # wx.info(dd_array)
 
+    def db_load_into_list_a_2(self, basic_info_df):
+        wx = lg.get_handle()
+        if (basic_info_df is None):
+            wx.info("Err: basic info dataframe is Empty,")
+            return -1
+        basic_info_array = basic_info_df.values.tolist()
+        i = 0
+        while (i < len(basic_info_array)):
+            basic_info_array[i] = tuple(basic_info_array[i])
+            i += 1
+        # wx.info(basic_info_array)
+        sql = "REPLACE INTO stock.list_a SET id=%s, name=%s, total_shares=%s, flow_shares=%s, list_date=%s, " \
+                                         "full_name=%s, industry=%s, industry_code=%s"
+        self.db.cursor.executemany(sql, basic_info_array)
+        self.db.handle.commit()
+
+    """
+    db_load_into_list_a() 已经废弃，目前使用新函数 db_load_into_list_a_2() 代替
+    """
     def db_load_into_list_a(self, basic_info_df):
         wx = lg.get_handle()
         for basic_info in basic_info_df.get_values():
@@ -71,7 +90,7 @@ class ex_web_data(object):
                 # self.logger.wt.info(
                 #     "Insert id={0}, name={1}, t_shares={2}, f_shares={3}, date={4}, f_name={5}, industry={6}, industry_code={7}".
                 #     format(basic_info[0], basic_info[1], basic_info[2], basic_info[3], basic_info[4], basic_info[5], basic_info[6], basic_info[7]))
-                wx.info("Insert id={0}, name={1}".format(basic_info[0], basic_info[1], ))
+                wx.info("Insert id={0}, name={1}".format(basic_info[0], basic_info[1] ))
                 self.db.cursor.execute(sql, (
                     basic_info[0], basic_info[1], float(basic_info[2]), float(basic_info[3]), basic_info[4],
                     basic_info[5], basic_info[6], basic_info[7]))
