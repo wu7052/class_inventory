@@ -1,13 +1,14 @@
 # from logger_package import myLogger
 # from filePackage import MyFile
 from db_package import db_ops
-from stock_package import ts_data, sz_web_data, sh_web_data
+from stock_package import ts_data, sz_web_data, sh_web_data, ex_web_data
 import sys
 import os
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, date, timedelta
 import time
 import new_logger as lg
+import re
 
 
 # 计时器 装饰器
@@ -18,7 +19,7 @@ def wx_timer(func):
         func(*args, **kwargs)
         time_used = time.time() - start_time
         # print("{} used {} seconds".format(func.__name__, time_used))
-        wx.info("{} used {} seconds".format(func.__name__, time_used))
+        wx.info("{} used {:.2f} seconds".format(func.__name__, time_used))
     return wrapper  # 这个语句 不属于 wrapper(), 而是 wx_timer 的返回值. 对应 func 后面这个()调用
 """
 # 计时器 装饰器
@@ -64,6 +65,7 @@ def update_sz_basic_info():
     finally:
         pass
 
+
 @wx_timer
 def update_sh_basic_info():
     wx = lg.get_handle()
@@ -106,6 +108,57 @@ def update_sh_basic_info():
         pass
 
 
+@wx_timer
+def update_daily_data_from_sina():
+    wx = lg.get_handle()
+    # sz_data = sz_web_data()
+    # sh_data = sh_web_data()
+    web_data = ex_web_data()
+    page_src = (('zxqy','stock.code_002_201901','中小板'),('cyb','stock.code_30_201901','创业板'),
+                ('sz_a','stock.code_00_201901','深证 主板'), ('sh_a','stock.code_60_201901','上证 主板'))
+
+    try:
+        for src in page_src:
+            # 上证 主板 、深证 主板 、中小板、 创业板
+            page_counter = 1
+            loop_flag = True
+            while loop_flag:
+                wx.info("==="*20)
+                wx.info("[update_daily_data_from_sina] downloading {} Page {} ".format(src[2], page_counter))
+                sina_daily_url = "http://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData?" \
+                           "page="+str(page_counter)+"&num=80&sort=symbol&asc=1&node="+ src[0] +"&symbol=&_s_r_a=page"
+                daily_str = web_data.get_json_str(url=sina_daily_url, web_flag='sh_basic')
+                # daily_str = daily_str[1:-1]
+                found = re.match(r'.*symbol', daily_str)
+                if  found is None :
+                    wx.info("[update_daily_data_from_sina] didn't acquire the data from page {}".format(page_counter))
+                    break
+                else:
+                    page_counter += 1
+
+                # 深证A股 的字符串包含 主板、中小板、创业板
+                # 'sz_a' 标志截断 中、创
+                if src[0] == 'sz_a':
+                    trunc_pos = daily_str.find(',{symbol:"sz002')
+                    if trunc_pos >= 0:
+                        daily_str = daily_str[:trunc_pos]+']'
+                        loop_flag = False  # 完成本次后，退出循环
+
+                # key字段 加引号，整理字符串
+                jstr = re.sub(r'([a-z|A-Z]+)(?=\:)', r'"\1"', daily_str)
+
+                # 按股票拆分 成list， 这里把整个页面的股票数据统一处理成 dataframe，不做拆分了
+                # d_arr = re.findall('{\S+?}',jstr)
+                today = datetime.now().strftime('%Y%m%d')
+
+                # 深证 A 股页面 包含了 主板、创业、中小， 所以处理 深证主板的时候，要把 创业、中小 的股票信息去掉
+                daily_data_frame = web_data.sina_daily_data_json_parse(json_str= jstr, date = today)
+                web_data.db_load_into_daily_data(dd_df=daily_data_frame, t_name=src[1])
+
+    except Exception as e:
+        wx.info("Err [update_daily_data_from_sina]: {}".format(e))
+
+@wx_timer
 def update_daily_data_from_ts(period=-1):
     wx = lg.get_handle()
     ts = ts_data()
@@ -113,6 +166,17 @@ def update_daily_data_from_ts(period=-1):
     sh_data = sh_web_data()
 
     try:
+        # 中小板
+        id_array_002 = sz_data.db_fetch_stock_id(pre_id='002%')
+        for id in id_array_002:
+            ts_code = id[0] + '.SZ'
+            dd_df = ts.acquire_daily_data(ts_code, period)
+            dd_df['ts_code'] = id[0]
+            # wx.info(dd_df)
+            # wx.info("{} daily data loading into DB...".format(ts_code))
+            sz_data.db_load_into_daily_data(dd_df=dd_df, t_name='stock.code_002_201901')
+
+       # 上证 主板
         id_array_60 = sh_data.db_fetch_stock_id(pre_id='60%')
         for id in id_array_60:
             ts_code = id[0] + '.SH'
@@ -122,6 +186,7 @@ def update_daily_data_from_ts(period=-1):
             # wx.info("{} daily data loading into DB...".format(ts_code))
             sh_data.db_load_into_daily_data(dd_df=dd_df, t_name='stock.code_60_201901')
 
+        # 深证 主板， 在 db_fetch_stcok_id() 中已做处理，剔除了 中小板的 002
         id_array_00 = sz_data.db_fetch_stock_id(pre_id='00%')
         for id in id_array_00:
             ts_code = id[0] + '.SZ'
@@ -131,7 +196,8 @@ def update_daily_data_from_ts(period=-1):
             # wx.info("{} daily data loading into DB...".format(ts_code))
             sz_data.db_load_into_daily_data(dd_df=dd_df, t_name='stock.code_00_201901')
 
-        id_array_30 = sz_data.db_fetch_stock_id(pre_id='30%')
+        # 创业板
+        id_array_30 = sz_data.db_fetch_stock_id(pre_id='300%')
         for id in id_array_30:
             ts_code = id[0] + '.SZ'
             dd_df = ts.acquire_daily_data(ts_code, period)
@@ -139,16 +205,45 @@ def update_daily_data_from_ts(period=-1):
             # wx.info(dd_df)
             # wx.info("{} daily data loading into DB...".format(ts_code))
             sz_data.db_load_into_daily_data(dd_df=dd_df, t_name='stock.code_30_201901')
-
     except Exception as e:
         wx.info("Err:[update_daily_data_from_ts]---{}".format(e))
     finally:
         pass
 
-    # df = ts.acquire_daily_data('000001.SZ')
-    # wx.info(df.describe())
-    # wx.info(df)
 
+def get_list_a_total_amount():
+    # wx = lg.get_handle()
+    db_data = ex_web_data()
+    db_data.db_call_procedure("list_a_total_amount",'20190108',1,2,3,4,5,6)
+
+
+@wx_timer
+def update_whole_sales_data(period = -1):
+    wx = lg.get_handle()
+    web_data = ex_web_data()
+    today = datetime.now().strftime('%Y-%m-%d')
+    start_date = (date.today() + timedelta(days=period)).strftime('%Y-%m-%d')
+    page_counter = 1
+
+    while True:
+        ws_eastmoney_url = "http://dcfm.eastmoney.com/em_mutisvcexpandinterface/api/js/get?type=DZJYXQ&" \
+                           "token=70f12f2f4f091e459a279469fe49eca5&cmd=&st=TDATE&sr=-1&" \
+                           "p="+str(page_counter)+"&ps=50&js=var%20doXCfrVg=%7Bpages:(tp),data:(x)%7D&filter=(Stype='EQA')" \
+                           "(TDATE%3E=%5E"+start_date+"%5E%20and%20TDATE%3C=%5E"+ today +"%5E)&rt=51576724"
+
+        daily_str = web_data.get_json_str(url=ws_eastmoney_url, web_flag='eastmoney')
+        daily_str = re.sub(r'.*(?={pages)',r'',daily_str)
+        daily_str = re.sub(r'(pages)(.*)(data)', r'"\1"\2"\3"', daily_str)
+        ws_df=web_data.east_ws_json_parse(daily_str)
+        wx.info("Total Page:{}---{}\n========================================"
+                .format(web_data.page_count, page_counter))
+        web_data.db_load_into_ws(ws_df= ws_df)
+
+        if page_counter >= web_data.page_count:
+            wx.info("Page : {} is the final page , End ")
+            break
+        page_counter += 1
+    # wx.info(daily_str)
 
 """
 # stock = ts_data()

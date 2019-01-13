@@ -1,14 +1,13 @@
 import pymysql
+import new_logger as lg
 
 class db_ops:
+    wx = lg.get_handle()
     def __init__(self, host='localhost', db='mysql', user='root', pwd=None):
-
-        # self.host = host
-        # self.db_name = db
-        # self.user = user
+        wx = lg.get_handle()
         try:
             if pwd is None:
-                print("[Err DB_OP]===> {0}:{1}:{2} need password ".format(host, db, user))
+                wx.info("[Err DB_OP]===> {0}:{1}:{2} need password ".format(host, db, user))
                 raise Exception("Password is Null")
             else:
                 # self.pwd = pwd
@@ -24,5 +23,9 @@ class db_ops:
                 self.handle = pymysql.connect(**self.config)
                 self.cursor = self.handle.cursor()
         except Exception as e:
-            print("Err occured in DB_OP __init__{}".format(e))
+            wx.info("Err occured in DB_OP __init__{}".format(e))
             raise e
+
+    def __del__(self):
+        wx = lg.get_handle()
+        wx.info("db_ops : {}: __del__ called".format(self))

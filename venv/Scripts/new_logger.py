@@ -1,6 +1,7 @@
 import os
 import logging.config
 from datetime import datetime
+import re
 
 def _init_():
     log_dir = os.path.abspath('.')
@@ -65,3 +66,18 @@ def _init_():
 
 def get_handle():
     return wt
+
+def str_decode(re_data = None, type = None):
+    try:
+        wx = get_handle()
+        re_data = re_data.decode(type)
+    except Exception as error:
+        wx.info('delete illegal string,try again...')
+        # err_msg = str(error)
+        pos = re.findall(r'([\d]+)inposition([\d]+):illegal', str(error).replace(' ', ''))
+        if len(pos) == 1:
+            re_data = re_data[0:int(pos[0][1])] + re_data[int(pos[0][1])+1:]
+            re_data = str_decode(re_data, type)
+            return re_data
+    return re_data
+

@@ -8,12 +8,18 @@ wx = lg.get_handle()
 
 from functions import *
 
-update_sh_basic_info()
-wx.info("<>"*40)
-update_sz_basic_info()
+# 从 eastmoney 获得大宗交易数据，开始时间可以指定，截止时间 到当日
+update_whole_sales_data(period = -200)
 
-# update_daily_data_from_ts(period = -1)
+# 从sina获得实时的交易数据
+# update_daily_data_from_sina()
 
-# update_sz_basic_info()
-# wx.info("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+# 调用mysql 存储过程获得 A 股市值
+#get_list_a_total_amount()
+
+# 从上证、深证 网站更新 A 股基础信息
 # update_sh_basic_info()
+# update_sz_basic_info()
+
+# 从tushare 获取前一天的 交易数据
+# update_daily_data_from_ts(period = -1)
