@@ -8,11 +8,11 @@ wx = lg.get_handle()
 
 from functions import *
 
-# 从 eastmoney 获得大宗交易数据，开始时间可以指定，截止时间 到当日
-update_whole_sales_data(period = -200)
+# 从 eastmoney 获得大宗交易数据，开始时间可以指定，截止时间 是今天
+update_whole_sales_data(period = 0)
 
 # 从sina获得实时的交易数据
-# update_daily_data_from_sina()
+update_daily_data_from_sina()
 
 # 调用mysql 存储过程获得 A 股市值
 #get_list_a_total_amount()

@@ -197,6 +197,8 @@ class ex_web_data(object):
         if json_str is not None:
             json_obj = json.loads(json_str)
         self.page_count = json_obj['pages']
+        if len(json_obj['data']) == 0 :
+            return None
         dt = jsonpath(json_obj, '$..TDATE')
         date = [re.sub(r'-','',tmp[0:10]) for tmp in dt]
         id = jsonpath(json_obj, '$..SECUCODE')
@@ -225,6 +227,16 @@ class ex_web_data(object):
         #     irow += 1
 
         return df1
+
+
+    def whole_sales_data_checking(self, start = None, end= None ):
+        sql = "select * from stock.ws_201901  where str_to_date(date,'%Y%m%d') " \
+              "between str_to_date("+ start +",'%Y%m%d') and str_to_date(" + end+",'%Y%m%d'); "
+        iCount = self.db.cursor.execute(sql)  # 返回值，受影响的行数， 不需要 fetchall 来读取了
+        if iCount == 0:
+            return True
+        else:
+            return False
 
     def db_load_into_ws(self, ws_df=None, force_update=False):
         wx = lg.get_handle()

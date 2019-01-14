@@ -2,7 +2,9 @@ set @s_00 = 0;
 set @s_002 =0;
 set @s_30 = 0;
 set @s_60 = 0;
-set @cur_date =  current_date()-1;
+#set @cur_date =  current_date();
+set @cur_date = date_format(current_date(),'%Y%m%d');
+
 #set @cur_date = utc_date();
 #set @cur_date = now();
 select @cur_date;

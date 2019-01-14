@@ -224,23 +224,30 @@ def update_whole_sales_data(period = -1):
     today = datetime.now().strftime('%Y-%m-%d')
     start_date = (date.today() + timedelta(days=period)).strftime('%Y-%m-%d')
     page_counter = 1
+    run_sig = web_data.whole_sales_data_checking(start = start_date, end=today)
 
-    while True:
+    # run_sig = True
+    while run_sig:
         ws_eastmoney_url = "http://dcfm.eastmoney.com/em_mutisvcexpandinterface/api/js/get?type=DZJYXQ&" \
                            "token=70f12f2f4f091e459a279469fe49eca5&cmd=&st=TDATE&sr=-1&" \
                            "p="+str(page_counter)+"&ps=50&js=var%20doXCfrVg=%7Bpages:(tp),data:(x)%7D&filter=(Stype='EQA')" \
                            "(TDATE%3E=%5E"+start_date+"%5E%20and%20TDATE%3C=%5E"+ today +"%5E)&rt=51576724"
 
         daily_str = web_data.get_json_str(url=ws_eastmoney_url, web_flag='eastmoney')
-        daily_str = re.sub(r'.*(?={pages)',r'',daily_str)
-        daily_str = re.sub(r'(pages)(.*)(data)', r'"\1"\2"\3"', daily_str)
+        daily_str = re.sub(r'.*(?={pages)',r'',daily_str)  # 去掉 {pages 之前的字符串
+        daily_str = re.sub(r'(pages)(.*)(data)', r'"\1"\2"\3"', daily_str) # 给 pages data 加引号，变为合法的 json 串
         ws_df=web_data.east_ws_json_parse(daily_str)
         wx.info("Total Page:{}---{}\n========================================"
                 .format(web_data.page_count, page_counter))
-        web_data.db_load_into_ws(ws_df= ws_df)
+
+        if ws_df is None:
+            wx.info("[update_whole_sales_data] Page {} didn't acquire any data".format(page_counter))
+            break
+        else:
+            web_data.db_load_into_ws(ws_df=ws_df)
 
         if page_counter >= web_data.page_count:
-            wx.info("Page : {} is the final page , End ")
+            wx.info("Page : {} is the final page , End ".format(page_counter))
             break
         page_counter += 1
     # wx.info(daily_str)
