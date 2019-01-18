@@ -6,8 +6,7 @@
       <change beforePath="$PROJECT_DIR$/venv/Scripts/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Scripts/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/check_daily_update.sql" beforeDir="false" afterPath="$PROJECT_DIR$/venv/check_daily_update.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/log/2019-01-13.log" beforeDir="false" afterPath="$PROJECT_DIR$/venv/log/2019-01-13.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/sql_call_procedure.sql" beforeDir="false" afterPath="$PROJECT_DIR$/venv/sql_call_procedure.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +19,7 @@
     <SUITE FILE_PATH="coverage/class_inventory$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1545184809160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/Scripts/stock_package" />
     <SUITE FILE_PATH="coverage/Pack_model_test$file.coverage" NAME="file Coverage Results" MODIFIED="1538404058970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/Scripts/filePackage" />
     <SUITE FILE_PATH="coverage/Pack_model_test$main.coverage" NAME="main Coverage Results" MODIFIED="1545100547163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/Scripts" />
-    <SUITE FILE_PATH="coverage/class_inventory$main.coverage" NAME="main Coverage Results" MODIFIED="1547455472648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/Scripts" />
+    <SUITE FILE_PATH="coverage/class_inventory$main.coverage" NAME="main Coverage Results" MODIFIED="1547812347912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/venv/Scripts" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -78,13 +77,14 @@
     <session id="-11996258">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="29" />
+          <entry key="project.closed" value="34" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="6" />
-          <entry key="project.open.time.10" value="2" />
-          <entry key="project.open.time.11" value="2" />
+          <entry key="project.open.time.10" value="3" />
+          <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.12" value="4" />
-          <entry key="project.open.time.13" value="2" />
+          <entry key="project.open.time.13" value="3" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="4" />
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="1" />
@@ -92,34 +92,34 @@
           <entry key="project.open.time.21" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.8" value="3" />
-          <entry key="project.open.time.9" value="3" />
-          <entry key="project.opened" value="32" />
+          <entry key="project.open.time.9" value="5" />
+          <entry key="project.opened" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="README" value="606" />
           <entry key="log" value="12" />
-          <entry key="py" value="16377" />
+          <entry key="py" value="17966" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="618" />
-          <entry key="Python" value="16373" />
+          <entry key="Python" value="17962" />
           <entry key="SQL" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="README" value="1" />
-          <entry key="log" value="26" />
+          <entry key="log" value="27" />
           <entry key="py" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="27" />
+          <entry key="PLAIN_TEXT" value="28" />
           <entry key="Python" value="39" />
         </counts>
       </usages-collector>
@@ -133,22 +133,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="200" selection-start-line="200" selection-end-line="200" />
+            <state relative-caret-position="6375">
+              <caret line="268" column="13" selection-start-line="268" selection-start-column="13" selection-end-line="268" selection-end-column="13" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/Scripts/db_package/db_operation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="700">
-              <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -175,11 +163,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/venv/Scripts/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+            <state relative-caret-position="550">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
             </state>
           </provider>
         </entry>
@@ -187,7 +175,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Scripts/new_logger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
+            <state relative-caret-position="1950">
               <caret line="81" selection-start-line="81" selection-end-line="81" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -196,11 +184,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Scripts/functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="241" selection-start-line="241" selection-end-line="241" />
+            <state relative-caret-position="1525">
+              <caret line="238" selection-start-line="238" selection-end-line="238" />
               <folding>
                 <element signature="e#71#100#0" expanded="true" />
               </folding>
@@ -209,9 +197,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/log/2019-01-17.log">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23025">
+              <caret line="921" column="153" selection-start-line="921" selection-start-column="153" selection-end-line="921" selection-end-column="153" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/log/2019-01-13.log">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="817">
+            <state relative-caret-position="2025">
               <caret line="81" column="145" selection-start-line="81" selection-start-column="97" selection-end-line="81" selection-end-column="145" />
             </state>
           </provider>
@@ -246,8 +243,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>#</find>
-      <find>array</find>
       <find>self.</find>
       <find>web_flay</find>
       <find>sh_data.logger.wt.info</find>
@@ -274,6 +269,10 @@
       <find>delta</find>
       <find>sub</find>
       <find>url_encode</find>
+      <find>fetch</find>
+      <find>run_sig</find>
+      <find>execute</find>
+      <find>fetchall</find>
     </findStrings>
     <replaceStrings>
       <replace>:</replace>
@@ -308,9 +307,9 @@
         <option value="$PROJECT_DIR$/venv/Scripts/stock_package/__init__.py" />
         <option value="$PROJECT_DIR$/venv/Scripts/new_logger.py" />
         <option value="$PROJECT_DIR$/venv/Scripts/db_package/db_operation.py" />
-        <option value="$PROJECT_DIR$/venv/Scripts/main.py" />
         <option value="$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py" />
         <option value="$PROJECT_DIR$/venv/Scripts/functions.py" />
+        <option value="$PROJECT_DIR$/venv/Scripts/main.py" />
       </list>
     </option>
   </component>
@@ -332,6 +331,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -380,7 +380,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -536,14 +535,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.59934855" visible="true" weight="0.17537314" />
-      <window_info id="Structure" order="1" sideWeight="0.40065145" side_tool="true" visible="true" weight="0.17537314" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5928339" visible="true" weight="0.18550107" />
+      <window_info id="Structure" order="1" sideWeight="0.40716612" side_tool="true" visible="true" weight="0.18550107" />
       <window_info id="Favorites" order="2" sideWeight="0.21281216" side_tool="true" weight="0.14978679" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39305103" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.42453855" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26275787" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.42345276" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32899022" />
@@ -593,13 +593,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py</url>
-          <line>198</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -815,8 +808,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
           <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6375">
+          <caret line="268" column="13" selection-start-line="268" selection-start-column="13" selection-end-line="268" selection-end-column="13" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -838,6 +838,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Scripts/new_logger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1950">
+          <caret line="81" selection-start-line="81" selection-end-line="81" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-17.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23025">
+          <caret line="921" column="153" selection-start-line="921" selection-start-column="153" selection-end-line="921" selection-end-column="153" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-13.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2025">
+          <caret line="81" column="145" selection-start-line="81" selection-start-column="97" selection-end-line="81" selection-end-column="145" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Scripts/stock_package/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -852,47 +876,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-13.log">
+    <entry file="file://$PROJECT_DIR$/venv/Scripts/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="81" column="145" selection-start-line="81" selection-start-column="97" selection-end-line="81" selection-end-column="145" />
+        <state relative-caret-position="1525">
+          <caret line="238" selection-start-line="238" selection-end-line="238" />
+          <folding>
+            <element signature="e#71#100#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/Scripts/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Scripts/new_logger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="81" selection-start-line="81" selection-end-line="81" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="200" selection-start-line="200" selection-end-line="200" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Scripts/functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="241" selection-start-line="241" selection-end-line="241" />
-          <folding>
-            <element signature="e#71#100#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="550">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>

@@ -7,7 +7,7 @@ import chardet
 import os
 from urllib import parse
 import new_logger as lg
-from datetime import datetime, time, date
+from datetime import datetime, time, date, timedelta
 import pandas as pd
 import json
 from jsonpath import jsonpath
@@ -94,7 +94,6 @@ class ex_web_data(object):
     """
     db_load_into_list_a() 已经废弃，目前使用新函数 db_load_into_list_a_2() 代替
     """
-
     def db_load_into_list_a(self, basic_info_df):
         wx = lg.get_handle()
         for basic_info in basic_info_df.get_values():
@@ -212,11 +211,13 @@ class ex_web_data(object):
         s_code = jsonpath(json_obj, '$..SALESCODE')
         close_price = jsonpath(json_obj, '$..CPRICE')
         pct_chg = jsonpath(json_obj, '$..RCHANGE')
-        ws_data = [date, id, disc, price, vol, vol_tf, amount, b_code, s_code, close_price, pct_chg]
+        b_name = jsonpath(json_obj, '$..BUYERNAME')
+        s_name = jsonpath(json_obj, '$..SALESNAME')
+        ws_data = [date, id, disc, price, vol, vol_tf, amount, b_code, s_code, close_price, pct_chg, b_name, s_name]
         df = pd.DataFrame(ws_data)
         df1 = df.T
         df1.rename(columns={0: 'Date', 1: 'ID', 2: 'Disc', 3: 'Price', 4: 'Vol', 5: 'Vol_tf', 6: 'Amount', 7: 'B_code',
-                            8: 'S_code', 9: 'Close_price', 10: 'Pct_chg'}, inplace=True)
+                            8: 'S_code', 9: 'Close_price', 10: 'Pct_chg', 11: 'B_name', 12: 'S_name'}, inplace=True)
 
         # irow = 0
         # while irow < len(df1['Date'].values.tolist()):
@@ -227,16 +228,6 @@ class ex_web_data(object):
         #     irow += 1
 
         return df1
-
-
-    def whole_sales_data_checking(self, start = None, end= None ):
-        sql = "select * from stock.ws_201901  where str_to_date(date,'%Y%m%d') " \
-              "between str_to_date("+ start +",'%Y%m%d') and str_to_date(" + end+",'%Y%m%d'); "
-        iCount = self.db.cursor.execute(sql)  # 返回值，受影响的行数， 不需要 fetchall 来读取了
-        if iCount == 0:
-            return True
-        else:
-            return False
 
     def db_load_into_ws(self, ws_df=None, force_update=False):
         wx = lg.get_handle()
@@ -249,6 +240,51 @@ class ex_web_data(object):
             ws_array[i] = tuple(ws_array[i])
             i += 1
         sql = "REPLACE INTO stock.ws_201901 SET date=%s, id=%s, disc=%s, price=%s, vol=%s, vol_tf=%s, " \
-              "amount=%s, b_code=%s, s_code=%s, close_price=%s, pct_chg=%s"
+              "amount=%s, b_code=%s, s_code=%s, close_price=%s, pct_chg=%s, b_name=%s, s_name=%s"
         self.db.cursor.executemany(sql, ws_array)
         self.db.handle.commit()
+
+    def whole_sales_stock_id(self):
+        sql = "select distinct id from ws_201901"
+
+        iCount = self.db.cursor.execute(sql)  # 返回值
+        if iCount > 0:
+            arr_id = self.db.cursor.fetchall()
+            return arr_id
+        else:
+            return None
+
+    def whole_sales_start_date(self):
+        # sql = "select date from stock.ws_201901  where str_to_date(date,'%Y%m%d') " \
+        #       "between str_to_date("+ start +",'%Y%m%d') and str_to_date(" + end+",'%Y%m%d'); "
+        sql = "select date from ws_201901 as w order by w.date desc limit 1"
+
+        iCount = self.db.cursor.execute(sql)  # 返回值
+        self.db.handle.commit()
+        if iCount == 1:
+            result = self.db.cursor.fetchone()
+            record_date = datetime.strptime(result[0],"%Y%m%d")  # 日期字符串 '20190111' ,转换成 20190111 日期类型
+            start_date = (record_date + timedelta(days=1)).strftime('%Y-%m-%d') # 起始日期 为记录日期+1天
+            return start_date
+        else:
+            return None
+
+    def whole_sales_data_remove(self):
+        # sql = "select date from stock.ws_201901  where str_to_date(date,'%Y%m%d') " \
+        #       "between str_to_date("+ start +",'%Y%m%d') and str_to_date(" + end+",'%Y%m%d'); "
+        sql = "delete from ws_201901"
+        iCount = self.db.cursor.execute(sql)  # 返回值
+        self.db.handle.commit()
+        return iCount
+
+    def whole_sales_analysis(self, s_id=None):
+        wx=lg.get_handle()
+        if s_id is None:
+            return -1
+
+        sql = "select date, b_code, s_code , vol, price from ws_201901 where id = %s"
+        self.db.cursor.execute(sql, (s_id))
+        self.db.handle.commit()
+        ws_flow = self.db.cursor.fetchall()
+        wx.info("[whole_sales_analysis] Stock {} record {}",format(s_id, ws_flow))
+

@@ -218,16 +218,26 @@ def get_list_a_total_amount():
 
 
 @wx_timer
-def update_whole_sales_data(period = -1):
+def update_whole_sales_data(force=False):
     wx = lg.get_handle()
     web_data = ex_web_data()
     today = datetime.now().strftime('%Y-%m-%d')
-    start_date = (date.today() + timedelta(days=period)).strftime('%Y-%m-%d')
-    page_counter = 1
-    run_sig = web_data.whole_sales_data_checking(start = start_date, end=today)
 
-    # run_sig = True
-    while run_sig:
+    page_counter = 1
+
+    # 强制刷新 ws 表，删除所有历史数据，重新导入
+    if force == True:
+        rows = web_data.whole_sales_data_remove()
+        start_date = (date.today() + timedelta(days=-500)).strftime('%Y-%m-%d')
+        wx.info("[update_whole_sales_date] Force to refresh  WS data {} rows REMOVED, ".format(rows))
+        wx.info("[update_whole_sales_date] Collect history data last 500 days!!!")
+    else: # 保持 ws表的数据，从最新日期+1 到 今天 ，获取web最新数据
+        start_date = web_data.whole_sales_start_date()
+        if start_date is None :
+            wx.info("[update_whole_sales_data] Checking lastest date None")
+            return -1
+
+    while True:
         ws_eastmoney_url = "http://dcfm.eastmoney.com/em_mutisvcexpandinterface/api/js/get?type=DZJYXQ&" \
                            "token=70f12f2f4f091e459a279469fe49eca5&cmd=&st=TDATE&sr=-1&" \
                            "p="+str(page_counter)+"&ps=50&js=var%20doXCfrVg=%7Bpages:(tp),data:(x)%7D&filter=(Stype='EQA')" \
@@ -236,7 +246,7 @@ def update_whole_sales_data(period = -1):
         daily_str = web_data.get_json_str(url=ws_eastmoney_url, web_flag='eastmoney')
         daily_str = re.sub(r'.*(?={pages)',r'',daily_str)  # 去掉 {pages 之前的字符串
         daily_str = re.sub(r'(pages)(.*)(data)', r'"\1"\2"\3"', daily_str) # 给 pages data 加引号，变为合法的 json 串
-        ws_df=web_data.east_ws_json_parse(daily_str)
+        ws_df=web_data.east_ws_json_parse(daily_str) # 组装 Dataframe，准备导入数据库
         wx.info("Total Page:{}---{}\n========================================"
                 .format(web_data.page_count, page_counter))
 
@@ -251,6 +261,15 @@ def update_whole_sales_data(period = -1):
             break
         page_counter += 1
     # wx.info(daily_str)
+
+@wx_timer
+def update_ws_share_holder():
+    wx = lg.get_handle()
+    web_data = ex_web_data()
+    arr_id = web_data.whole_sales_stock_id()  # arr_id = ((id),(id),(id)....)
+    wx.info("Total {} stocks records in Whole Sales tables".format(len(arr_id)))
+    for stock_id in arr_id:
+        web_data.whole_sales_analysis(id = stock_id[0])
 
 """
 # stock = ts_data()
