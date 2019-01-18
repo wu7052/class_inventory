@@ -27,3 +27,9 @@ ex_web_data 类：是 sh_web_data, sz_web_data 的父类，包含一些 json 的
 
 2018.12.21
 sh_web_data: 增加 行业类型 的数据，从web页面抓取到 DataFrame
+
+2019.1.18
+从tushare获得日交易数据
+从sina获得实时交易数据
+大宗交易数据收集到数据库
+增加一个 Dev 分支
