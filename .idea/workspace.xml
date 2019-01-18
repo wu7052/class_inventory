@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="06aa085f-f6e6-4756-bd4d-04ebdd255c0a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/sql_call_procedure.sql" beforeDir="false" afterPath="$PROJECT_DIR$/venv/sql_call_procedure.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,9 +73,9 @@
     <session id="-11996258">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="34" />
+          <entry key="project.closed" value="38" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.1" value="6" />
+          <entry key="project.open.time.1" value="9" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="3" />
           <entry key="project.open.time.12" value="4" />
@@ -93,7 +89,7 @@
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.8" value="3" />
           <entry key="project.open.time.9" value="5" />
-          <entry key="project.opened" value="38" />
+          <entry key="project.opened" value="41" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -112,14 +108,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="README" value="1" />
+          <entry key="README" value="3" />
           <entry key="log" value="27" />
           <entry key="py" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="28" />
+          <entry key="PLAIN_TEXT" value="30" />
           <entry key="Python" value="39" />
         </counts>
       </usages-collector>
@@ -133,7 +129,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6375">
+            <state relative-caret-position="6700">
               <caret line="268" column="13" selection-start-line="268" selection-start-column="13" selection-end-line="268" selection-end-column="13" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
@@ -143,18 +139,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/log/2019-01-12.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103700">
-              <caret line="4148" selection-start-line="4148" selection-end-line="4148" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Scripts/stock_package/sz_ex_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="400">
               <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
               <folding>
                 <element signature="e#38#69#0" expanded="true" />
@@ -163,7 +150,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Scripts/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="550">
@@ -172,10 +159,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/venv/README">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="700">
+              <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Scripts/new_logger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1950">
+            <state relative-caret-position="2025">
               <caret line="81" selection-start-line="81" selection-end-line="81" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -187,29 +183,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/venv/Scripts/functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1525">
-              <caret line="238" selection-start-line="238" selection-end-line="238" />
+            <state relative-caret-position="3400">
+              <caret line="136" column="37" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
               <folding>
                 <element signature="e#71#100#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/log/2019-01-17.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23025">
-              <caret line="921" column="153" selection-start-line="921" selection-start-column="153" selection-end-line="921" selection-end-column="153" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/venv/log/2019-01-13.log">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2025">
-              <caret line="81" column="145" selection-start-line="81" selection-start-column="97" selection-end-line="81" selection-end-column="145" />
             </state>
           </provider>
         </entry>
@@ -343,38 +321,6 @@
               <item name="class_inventory" type="b2602c69:ProjectViewProjectNode" />
               <item name="class_inventroy" type="462c0819:PsiDirectoryNode" />
               <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="class_inventory" type="b2602c69:ProjectViewProjectNode" />
-              <item name="class_inventroy" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="class_inventory" type="b2602c69:ProjectViewProjectNode" />
-              <item name="class_inventroy" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="class_inventory" type="b2602c69:ProjectViewProjectNode" />
-              <item name="class_inventroy" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Scripts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="class_inventory" type="b2602c69:ProjectViewProjectNode" />
-              <item name="class_inventroy" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Scripts" type="462c0819:PsiDirectoryNode" />
-              <item name="db_package" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="class_inventory" type="b2602c69:ProjectViewProjectNode" />
-              <item name="class_inventroy" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Scripts" type="462c0819:PsiDirectoryNode" />
-              <item name="stock_package" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -537,8 +483,8 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5928339" visible="true" weight="0.18550107" />
-      <window_info id="Structure" order="1" sideWeight="0.40716612" side_tool="true" visible="true" weight="0.18550107" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.58957654" visible="true" weight="0.19189766" />
+      <window_info id="Structure" order="1" sideWeight="0.41042346" side_tool="true" visible="true" weight="0.19189766" />
       <window_info id="Favorites" order="2" sideWeight="0.21281216" side_tool="true" weight="0.14978679" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -760,13 +706,6 @@
     <entry file="file://$PROJECT_DIR$/venv/log/2018-12-22.log" />
     <entry file="file://$PROJECT_DIR$/venv/log/2018-12-27.log" />
     <entry file="file://$PROJECT_DIR$/venv/log/2018-12-23.log" />
-    <entry file="file://$PROJECT_DIR$/venv/README">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/log/2019-01-02.log" />
     <entry file="file://$PROJECT_DIR$/venv/Scripts/logger.py" />
     <entry file="file://$PROJECT_DIR$/venv/Scripts/logger_package/__init__.py">
@@ -797,13 +736,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-11.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135325">
-          <caret line="5413" column="116" selection-start-line="5413" selection-start-column="116" selection-end-line="5413" selection-end-column="116" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-11.log" />
     <entry file="file://$PROJECT_DIR$/venv/Scripts/db_package/db_operation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="700">
@@ -811,9 +744,12 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-12.log" />
+    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-17.log" />
+    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-13.log" />
     <entry file="file://$PROJECT_DIR$/venv/Scripts/stock_package/ex_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6375">
+        <state relative-caret-position="6700">
           <caret line="268" column="13" selection-start-line="268" selection-start-column="13" selection-end-line="268" selection-end-column="13" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
@@ -821,16 +757,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-12.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103700">
-          <caret line="4148" selection-start-line="4148" selection-end-line="4148" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Scripts/stock_package/sz_ex_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
+        <state relative-caret-position="400">
           <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
           <folding>
             <element signature="e#38#69#0" expanded="true" />
@@ -838,9 +767,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Scripts/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Scripts/new_logger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
+        <state relative-caret-position="2025">
           <caret line="81" selection-start-line="81" selection-end-line="81" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
@@ -848,17 +784,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-17.log">
+    <entry file="file://$PROJECT_DIR$/venv/Scripts/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23025">
-          <caret line="921" column="153" selection-start-line="921" selection-start-column="153" selection-end-line="921" selection-end-column="153" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/log/2019-01-13.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2025">
-          <caret line="81" column="145" selection-start-line="81" selection-start-column="97" selection-end-line="81" selection-end-column="145" />
+        <state relative-caret-position="3400">
+          <caret line="136" column="37" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="37" />
+          <folding>
+            <element signature="e#71#100#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -876,20 +808,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Scripts/functions.py">
+    <entry file="file://$PROJECT_DIR$/venv/README">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1525">
-          <caret line="238" selection-start-line="238" selection-end-line="238" />
-          <folding>
-            <element signature="e#71#100#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/Scripts/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="700">
+          <caret line="28" column="44" selection-start-line="28" selection-start-column="44" selection-end-line="28" selection-end-column="44" />
         </state>
       </provider>
     </entry>
