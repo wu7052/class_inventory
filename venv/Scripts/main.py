@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # __author__ = "WUX"
+# dev version
 
 import new_logger as lg
 lg._init_()
