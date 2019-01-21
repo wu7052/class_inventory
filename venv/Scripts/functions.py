@@ -13,14 +13,17 @@ import re
 
 # 计时器 装饰器
 def wx_timer(func):
-    def wrapper(*args, ** kwargs):
+    def wrapper(*args, **kwargs):
         wx = lg.get_handle()
         start_time = time.time()
         func(*args, **kwargs)
         time_used = time.time() - start_time
         # print("{} used {} seconds".format(func.__name__, time_used))
         wx.info("{} used {:.2f} seconds".format(func.__name__, time_used))
+
     return wrapper  # 这个语句 不属于 wrapper(), 而是 wx_timer 的返回值. 对应 func 后面这个()调用
+
+
 """
 # 计时器 装饰器
 def wx_timer(func):
@@ -33,6 +36,7 @@ def wx_timer(func):
         wx.info("{} used {} seconds".format(func.__name__, time_used))
     return wrapper
 """
+
 
 @wx_timer
 def update_sz_basic_info():
@@ -114,8 +118,8 @@ def update_daily_data_from_sina():
     # sz_data = sz_web_data()
     # sh_data = sh_web_data()
     web_data = ex_web_data()
-    page_src = (('zxqy','stock.code_002_201901','中小板'),('cyb','stock.code_30_201901','创业板'),
-                ('sz_a','stock.code_00_201901','深证 主板'), ('sh_a','stock.code_60_201901','上证 主板'))
+    page_src = (('zxqy', 'stock.code_002_201901', '中小板'), ('cyb', 'stock.code_30_201901', '创业板'),
+                ('sz_a', 'stock.code_00_201901', '深证 主板'), ('sh_a', 'stock.code_60_201901', '上证 主板'))
 
     try:
         for src in page_src:
@@ -123,14 +127,16 @@ def update_daily_data_from_sina():
             page_counter = 1
             loop_flag = True
             while loop_flag:
-                wx.info("==="*20)
+                wx.info("===" * 20)
                 wx.info("[update_daily_data_from_sina] downloading {} Page {} ".format(src[2], page_counter))
                 sina_daily_url = "http://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData?" \
-                           "page="+str(page_counter)+"&num=80&sort=symbol&asc=1&node="+ src[0] +"&symbol=&_s_r_a=page"
+                                 "page=" + str(page_counter) + "&num=80&sort=symbol&asc=1&node=" + src[
+                                     0] + "&symbol=&_s_r_a=page"
+
                 daily_str = web_data.get_json_str(url=sina_daily_url, web_flag='sh_basic')
                 # daily_str = daily_str[1:-1]
                 found = re.match(r'.*symbol', daily_str)
-                if  found is None :
+                if found is None:
                     wx.info("[update_daily_data_from_sina] didn't acquire the data from page {}".format(page_counter))
                     break
                 else:
@@ -141,7 +147,7 @@ def update_daily_data_from_sina():
                 if src[0] == 'sz_a':
                     trunc_pos = daily_str.find(',{symbol:"sz002')
                     if trunc_pos >= 0:
-                        daily_str = daily_str[:trunc_pos]+']'
+                        daily_str = daily_str[:trunc_pos] + ']'
                         loop_flag = False  # 完成本次后，退出循环
 
                 # key字段 加引号，整理字符串
@@ -152,11 +158,12 @@ def update_daily_data_from_sina():
                 today = datetime.now().strftime('%Y%m%d')
 
                 # 深证 A 股页面 包含了 主板、创业、中小， 所以处理 深证主板的时候，要把 创业、中小 的股票信息去掉
-                daily_data_frame = web_data.sina_daily_data_json_parse(json_str= jstr, date = today)
+                daily_data_frame = web_data.sina_daily_data_json_parse(json_str=jstr, date=today)
                 web_data.db_load_into_daily_data(dd_df=daily_data_frame, t_name=src[1])
 
     except Exception as e:
         wx.info("Err [update_daily_data_from_sina]: {}".format(e))
+
 
 @wx_timer
 def update_daily_data_from_ts(period=-1):
@@ -176,7 +183,7 @@ def update_daily_data_from_ts(period=-1):
             # wx.info("{} daily data loading into DB...".format(ts_code))
             sz_data.db_load_into_daily_data(dd_df=dd_df, t_name='stock.code_002_201901')
 
-       # 上证 主板
+        # 上证 主板
         id_array_60 = sh_data.db_fetch_stock_id(pre_id='60%')
         for id in id_array_60:
             ts_code = id[0] + '.SH'
@@ -214,7 +221,7 @@ def update_daily_data_from_ts(period=-1):
 def get_list_a_total_amount():
     # wx = lg.get_handle()
     db_data = ex_web_data()
-    db_data.db_call_procedure("list_a_total_amount",'20190108',1,2,3,4,5,6)
+    db_data.db_call_procedure("list_a_total_amount", '20190108', 1, 2, 3, 4, 5, 6)
 
 
 @wx_timer
@@ -223,32 +230,35 @@ def update_whole_sales_data(force=False):
     web_data = ex_web_data()
     today = datetime.now().strftime('%Y-%m-%d')
 
+    # select * from ws_201901 where  str_to_date(date, '%Y%m%d') < str_to_date('20180701', '%Y%m%d');
+
     page_counter = 1
 
     # 强制刷新 ws 表，删除所有历史数据，重新导入
     if force == True:
         rows = web_data.whole_sales_data_remove()
-        start_date = (date.today() + timedelta(days=-500)).strftime('%Y-%m-%d')
+        start_date = (date.today() + timedelta(days=-550)).strftime('%Y-%m-%d')
         wx.info("[update_whole_sales_date] Force to refresh  WS data {} rows REMOVED, ".format(rows))
-        wx.info("[update_whole_sales_date] Collect history data last 500 days!!!")
-    else: # 保持 ws表的数据，从最新日期+1 到 今天 ，获取web最新数据
+        wx.info("[update_whole_sales_date] Collect history data last 550 days!!!")
+    else:  # 保持 ws表的数据，从最新日期+1 到 今天 ，获取web最新数据
         start_date = web_data.whole_sales_start_date()
-        if start_date is None :
+        if start_date is None:
             wx.info("[update_whole_sales_data] Checking lastest date None")
             return -1
 
     while True:
         ws_eastmoney_url = "http://dcfm.eastmoney.com/em_mutisvcexpandinterface/api/js/get?type=DZJYXQ&" \
                            "token=70f12f2f4f091e459a279469fe49eca5&cmd=&st=TDATE&sr=-1&" \
-                           "p="+str(page_counter)+"&ps=50&js=var%20doXCfrVg=%7Bpages:(tp),data:(x)%7D&filter=(Stype='EQA')" \
-                           "(TDATE%3E=%5E"+start_date+"%5E%20and%20TDATE%3C=%5E"+ today +"%5E)&rt=51576724"
-
+                           "p=" + str(page_counter) + "&ps=50&js=var%20doXCfrVg=%7Bpages:(tp),data:(x)%7D&" \
+                            "filter=(Stype='EQA')(TDATE%3E=%5E" + start_date + "%5E%20and%20TDATE%3C=%5E" + today + \
+                           "%5E)&rt=51576724"
+        wx.info(ws_eastmoney_url)
         daily_str = web_data.get_json_str(url=ws_eastmoney_url, web_flag='eastmoney')
-        daily_str = re.sub(r'.*(?={pages)',r'',daily_str)  # 去掉 {pages 之前的字符串
-        daily_str = re.sub(r'(pages)(.*)(data)', r'"\1"\2"\3"', daily_str) # 给 pages data 加引号，变为合法的 json 串
-        ws_df=web_data.east_ws_json_parse(daily_str) # 组装 Dataframe，准备导入数据库
-        wx.info("Total Page:{}---{}\n========================================"
-                .format(web_data.page_count, page_counter))
+        daily_str = re.sub(r'.*(?={pages)', r'', daily_str)  # 去掉 {pages 之前的字符串
+        daily_str = re.sub(r'(pages)(.*)(data)', r'"\1"\2"\3"', daily_str)  # 给 pages data 加引号，变为合法的 json 串
+        ws_df = web_data.east_ws_json_parse(daily_str)  # 组装 Dataframe，准备导入数据库
+        wx.info("[Eastmoney_ws_data]Total Page:{}---{}, Start date: {}\n========================================"
+                .format(web_data.page_count, page_counter, start_date))
 
         if ws_df is None:
             wx.info("[update_whole_sales_data] Page {} didn't acquire any data".format(page_counter))
@@ -262,14 +272,24 @@ def update_whole_sales_data(force=False):
         page_counter += 1
     # wx.info(daily_str)
 
+
 @wx_timer
 def update_ws_share_holder():
     wx = lg.get_handle()
     web_data = ex_web_data()
     arr_id = web_data.whole_sales_stock_id()  # arr_id = ((id),(id),(id)....)
     wx.info("Total {} stocks records in Whole Sales tables".format(len(arr_id)))
+    iCounter = -1
     for stock_id in arr_id:
-        web_data.whole_sales_analysis(id = stock_id[0])
+        iCounter += 1
+        df_share_holder = web_data.whole_sales_analysis(s_id=stock_id[0])
+        if df_share_holder.empty:
+            wx.info("{} failed to gather Share Holders' Information".format(stock_id[0]))
+            continue
+        else:
+            wx.info("{}/{} : {} Loaded Share Holders' Information".format(iCounter, len(arr_id), stock_id[0]))
+
+
 
 """
 # stock = ts_data()

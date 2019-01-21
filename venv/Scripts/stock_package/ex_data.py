@@ -9,6 +9,7 @@ from urllib import parse
 import new_logger as lg
 from datetime import datetime, time, date, timedelta
 import pandas as pd
+import numpy as np
 import json
 from jsonpath import jsonpath
 import re
@@ -94,6 +95,7 @@ class ex_web_data(object):
     """
     db_load_into_list_a() 已经废弃，目前使用新函数 db_load_into_list_a_2() 代替
     """
+
     def db_load_into_list_a(self, basic_info_df):
         wx = lg.get_handle()
         for basic_info in basic_info_df.get_values():
@@ -196,10 +198,10 @@ class ex_web_data(object):
         if json_str is not None:
             json_obj = json.loads(json_str)
         self.page_count = json_obj['pages']
-        if len(json_obj['data']) == 0 :
+        if len(json_obj['data']) == 0:
             return None
         dt = jsonpath(json_obj, '$..TDATE')
-        date = [re.sub(r'-','',tmp[0:10]) for tmp in dt]
+        date = [re.sub(r'-', '', tmp[0:10]) for tmp in dt]
         id = jsonpath(json_obj, '$..SECUCODE')
         disc = jsonpath(json_obj, '$..Zyl')
         price = jsonpath(json_obj, '$..PRICE')
@@ -229,9 +231,9 @@ class ex_web_data(object):
 
         return df1
 
-    def db_load_into_ws(self, ws_df=None, force_update=False):
+    def db_load_into_ws(self, ws_df=None):
         wx = lg.get_handle()
-        if (ws_df is None):
+        if ws_df is None:
             wx.info("Err: whole sales dataframe is Empty,")
             return -1
         ws_array = ws_df.values.tolist()
@@ -263,13 +265,16 @@ class ex_web_data(object):
         self.db.handle.commit()
         if iCount == 1:
             result = self.db.cursor.fetchone()
-            record_date = datetime.strptime(result[0],"%Y%m%d")  # 日期字符串 '20190111' ,转换成 20190111 日期类型
-            start_date = (record_date + timedelta(days=1)).strftime('%Y-%m-%d') # 起始日期 为记录日期+1天
+            record_date = datetime.strptime(result[0], "%Y%m%d")  # 日期字符串 '20190111' ,转换成 20190111 日期类型
+            start_date = (record_date + timedelta(days=1)).strftime('%Y-%m-%d')  # 起始日期 为记录日期+1天
             return start_date
         else:
             return None
 
     def whole_sales_data_remove(self):
+        start_date = (date.today() + timedelta(days=-550)).strftime('%Y-%m-%d')
+
+        # select * from ws_201901 where str_to_date(date, '%Y%m%d') < str_to_date('20170906', '%Y%m%d');
         # sql = "select date from stock.ws_201901  where str_to_date(date,'%Y%m%d') " \
         #       "between str_to_date("+ start +",'%Y%m%d') and str_to_date(" + end+",'%Y%m%d'); "
         sql = "delete from ws_201901"
@@ -278,13 +283,73 @@ class ex_web_data(object):
         return iCount
 
     def whole_sales_analysis(self, s_id=None):
-        wx=lg.get_handle()
+        wx = lg.get_handle()
         if s_id is None:
             return -1
 
-        sql = "select date, b_code, s_code , vol, price from ws_201901 where id = %s"
+        # 查询该股票所有的大宗交易流水，输出成 Dataframe 格式
+        sql = "select b_code, b_name, s_code, s_name, vol, vol_tf, price, amount from ws_201901 where id = %s order by date asc"
         self.db.cursor.execute(sql, (s_id))
         self.db.handle.commit()
         ws_flow = self.db.cursor.fetchall()
-        wx.info("[whole_sales_analysis] Stock {} record {}",format(s_id, ws_flow))
+        columnDes = self.db.cursor.description  # 获取连接对象的描述信息
+        columnNames = [columnDes[i][0] for i in range(len(columnDes))]
+        df_ws_flow = pd.DataFrame([list(i) for i in ws_flow], columns=columnNames)
 
+        # 买方信息归集整理成 Dataframe
+        buyer_vol = df_ws_flow['vol'].groupby(df_ws_flow['b_code']).sum()
+        buyer_vol_tf = df_ws_flow['vol_tf'].groupby(df_ws_flow['b_code']).sum()
+        buyer_amount = df_ws_flow['amount'].groupby(df_ws_flow['b_code']).sum()
+        buyer_price = buyer_amount / buyer_vol
+
+        df_buyer = pd.concat([buyer_vol, buyer_price, buyer_vol_tf], axis=1)
+        df_buyer['id'] = s_id
+        df_buyer['s_vol'] = 0
+        df_buyer['s_price'] = 0
+        df_buyer['s_vol_tf'] = 0
+        df_buyer = df_buyer.reset_index()
+        # df_buyer_cols = ['','','','','','','']
+        df_buyer.columns = ['h_code', 'b_vol', 'b_price', 'b_vol_tf', 'id', 's_vol', 's_price', 's_vol_tf']
+        df_buyer = df_buyer.reindex(
+            columns=['id', 'h_code', 'b_vol', 'b_price', 'b_vol_tf', 's_vol', 's_price', 's_vol_tf'])
+
+        # 卖方信息归集整理成 Dataframe
+        seller_vol = df_ws_flow['vol'].groupby(df_ws_flow['s_code']).sum()
+        seller_vol_tf = df_ws_flow['vol_tf'].groupby(df_ws_flow['s_code']).sum()
+        seller_amount = df_ws_flow['amount'].groupby(df_ws_flow['s_code']).sum()
+        seller_price = seller_amount / seller_vol
+        df_seller = pd.concat([seller_vol, seller_price, seller_vol_tf], axis=1)
+        df_seller['id'] = s_id
+        df_seller['b_vol'] = 0
+        df_seller['b_price'] = 0
+        df_seller['b_vol_tf'] = 0
+        df_seller = df_seller.reset_index()
+        df_seller.columns = ['h_code', 's_vol', 's_price', 's_vol_tf', 'id', 'b_vol', 'b_price', 'b_vol_tf']
+        df_seller = df_seller.reindex(
+            columns=['id', 'h_code', 'b_vol', 'b_price', 'b_vol_tf', 's_vol', 's_price', 's_vol_tf'])
+
+        # 买方、卖方 Dataframe 合并成一个 Dataframe
+        df_share_holder = pd.concat([df_buyer, df_seller], axis=0, join='outer')
+        df_share_holder = df_share_holder.groupby('h_code').sum()  #  合并 h_code相同 的 买家 、卖家 数据
+        df_share_holder = df_share_holder.reset_index() # 重新整理成一个 Dataframe
+
+        return df_share_holder
+"""
+        sql = "select distinct b_code from ws_201901 where id = %s order by date asc"
+        self.db.cursor.execute(sql, (s_id))
+        self.db.handle.commit()
+        arr_buyer = self.db.cursor.fetchall()
+        columnDes = cursor.description  # 获取连接对象的描述信息
+        columnNames = [columnDes[i][0] for i in range(len(columnDes))]
+        df_buyer = pd.DataFrame([list(i) for i in arr_buyer], columns=columnNames)
+
+        # wx.info("[whole_sales_analysis] Stock {} record {}",format(s_id, arr_buyer))
+
+        sql = "select distinct s_code from ws_201901 where id = %s order by date asc"
+        self.db.cursor.execute(sql, (s_id))
+        self.db.handle.commit()
+        arr_seller = self.db.cursor.fetchall()
+        # wx.info("[whole_sales_analysis] Stock {} record {}", format(s_id, arr_seller))
+"""
+
+# wx.info("[whole_sales_analysis] Stock {} record {}",format(s_id, ws_flow))

@@ -1,0 +1,125 @@
+[2019-01-19 19:50:09][MainThread:10844][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 19:50:09][MainThread:10844][task_id:new_logger][functions.py:270][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 19:50:09][MainThread:10844][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x03FF8930>: __del__() called]
+[2019-01-19 19:50:09][MainThread:10844][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x03FF8630>: __del__ called]
+[2019-01-19 19:50:39][MainThread:5744][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 19:50:59][MainThread:5744][task_id:new_logger][functions.py:270][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 19:51:22][MainThread:5744][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x04DF8690>: __del__() called]
+[2019-01-19 19:51:22][MainThread:5744][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x047E3D70>: __del__ called]
+[2019-01-19 19:52:12][MainThread:8316][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 19:52:12][MainThread:8316][task_id:new_logger][functions.py:270][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 19:52:59][MainThread:8316][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x0412F6F0>: __del__() called]
+[2019-01-19 19:52:59][MainThread:8316][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x04148E30>: __del__ called]
+[2019-01-19 19:53:19][MainThread:10940][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 19:53:19][MainThread:10940][task_id:new_logger][functions.py:270][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 19:59:41][MainThread:10784][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 19:59:41][MainThread:10784][task_id:new_logger][functions.py:270][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 22:05:39][MainThread:3312][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 22:05:39][MainThread:3312][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 22:15:48][MainThread:1984][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 22:15:48][MainThread:1984][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 22:15:53][MainThread:1984][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x04C3F6D0>: __del__() called]
+[2019-01-19 22:15:53][MainThread:1984][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x04C58690>: __del__ called]
+[2019-01-19 23:16:51][MainThread:5356][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:16:52][MainThread:5356][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:17:51][MainThread:18908][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:17:51][MainThread:18908][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:23:51][MainThread:12088][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:23:51][MainThread:12088][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:27:05][MainThread:11196][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:27:05][MainThread:11196][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:30:16][MainThread:13560][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:30:16][MainThread:13560][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:30:16][MainThread:13560][task_id:new_logger][ex_data.py:296][INFO][df_buyer_vol:{
+'80033242':
+3    771.84
+4    280.43
+Name: vol, dtype: float64,
+'80372631': 0    94.0
+Name: vol, dtype: float64,
+'80406689': 1    600.00
+2    771.84
+Name: vol, dtype: float64}]
+[2019-01-19 23:30:17][MainThread:13560][task_id:new_logger][ex_data.py:297][INFO][df_seller_vol:{'80131808': 0    94.0
+Name: vol, dtype: float64, '80406689': 1    600.00
+2    771.84
+3    771.84
+4    280.43
+Name: vol, dtype: float64}]
+[2019-01-19 23:30:17][MainThread:13560][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x03F36F70>: __del__() called]
+[2019-01-19 23:30:17][MainThread:13560][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x040356D0>: __del__ called]
+[2019-01-19 23:30:17][MainThread:13560][task_id:new_logger][functions.py:22][INFO][update_ws_share_holder used 0.13 seconds]
+[2019-01-19 23:33:03][MainThread:13720][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:33:03][MainThread:13720][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:33:03][MainThread:13720][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x03584790>: __del__() called]
+[2019-01-19 23:33:03][MainThread:13720][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x0365F570>: __del__ called]
+[2019-01-19 23:36:27][MainThread:8236][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:36:27][MainThread:8236][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:36:27][MainThread:8236][task_id:new_logger][ex_data.py:298][INFO][df_buyer_vol:b_code
+80033242    1052.27
+80372631      94.00
+80406689    1371.84
+Name: vol, dtype: float64]
+[2019-01-19 23:36:27][MainThread:8236][task_id:new_logger][ex_data.py:299][INFO][df_seller_vol:s_code
+80131808      94.00
+80406689    2424.11
+Name: vol, dtype: float64]
+[2019-01-19 23:36:27][MainThread:8236][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x04144750>: __del__() called]
+[2019-01-19 23:36:27][MainThread:8236][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x0421F570>: __del__ called]
+[2019-01-19 23:36:27][MainThread:8236][task_id:new_logger][functions.py:22][INFO][update_ws_share_holder used 0.11 seconds]
+[2019-01-19 23:39:57][MainThread:8012][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:39:57][MainThread:8012][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:39:57][MainThread:8012][task_id:new_logger][ex_data.py:298][INFO][df_buyer_vol: <class 'pandas.core.series.Series'>:b_code
+80033242    1052.27
+80372631      94.00
+80406689    1371.84
+Name: vol, dtype: float64]
+[2019-01-19 23:39:57][MainThread:8012][task_id:new_logger][ex_data.py:299][INFO][df_seller_vol: <class 'pandas.core.series.Series'>:s_code
+80131808      94.00
+80406689    2424.11
+Name: vol, dtype: float64]
+[2019-01-19 23:39:57][MainThread:8012][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x035E4770>: __del__() called]
+[2019-01-19 23:39:57][MainThread:8012][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x036BF570>: __del__ called]
+[2019-01-19 23:39:57][MainThread:8012][task_id:new_logger][functions.py:22][INFO][update_ws_share_holder used 0.10 seconds]
+[2019-01-19 23:43:35][MainThread:16156][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:43:35][MainThread:16156][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:43:36][MainThread:16156][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x03544790>: __del__() called]
+[2019-01-19 23:43:36][MainThread:16156][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x0361F570>: __del__ called]
+[2019-01-19 23:47:09][MainThread:4900][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:47:09][MainThread:4900][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:47:09][MainThread:4900][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x03584770>: __del__() called]
+[2019-01-19 23:47:09][MainThread:4900][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x03584790>: __del__ called]
+[2019-01-19 23:47:35][MainThread:14828][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:47:35][MainThread:14828][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:50:19][MainThread:7580][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:50:19][MainThread:7580][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:50:19][MainThread:7580][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x03A94790>: __del__() called]
+[2019-01-19 23:50:19][MainThread:7580][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x03B6F570>: __del__ called]
+[2019-01-19 23:50:41][MainThread:11140][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:50:41][MainThread:11140][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:51:08][MainThread:11140][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x0443B7D0>: __del__() called]
+[2019-01-19 23:51:08][MainThread:11140][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x04453E30>: __del__ called]
+[2019-01-19 23:51:50][MainThread:3668][task_id:new_logger][ex_data.py:25][INFO][ex_web_data : __init__() called]
+[2019-01-19 23:51:50][MainThread:3668][task_id:new_logger][functions.py:272][INFO][Total 2138 stocks records in Whole Sales tables]
+[2019-01-19 23:51:50][MainThread:3668][task_id:new_logger][ex_data.py:300][INFO][df_buyer_vol: <class 'pandas.core.series.Series'>:b_code
+80033242    1052.27
+80372631      94.00
+80406689    1371.84
+Name: vol, dtype: float64]
+[2019-01-19 23:51:50][MainThread:3668][task_id:new_logger][ex_data.py:301][INFO][df_buyer_vol: <class 'pandas.core.series.Series'>:b_code
+80033242    1.513960
+80372631    0.156117
+80406689    1.971223
+Name: vol_tf, dtype: float64]
+[2019-01-19 23:51:50][MainThread:3668][task_id:new_logger][ex_data.py:302][INFO][<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>]
+[2019-01-19 23:51:50][MainThread:3668][task_id:new_logger][ex_data.py:303][INFO][df_seller_vol: <class 'pandas.core.series.Series'>:s_code
+80131808      94.00
+80406689    2424.11
+Name: vol, dtype: float64]
+[2019-01-19 23:51:50][MainThread:3668][task_id:new_logger][ex_data.py:304][INFO][df_seller_vol: <class 'pandas.core.series.Series'>:s_code
+80131808    0.156117
+80406689    3.485183
+Name: vol_tf, dtype: float64]
+[2019-01-19 23:51:50][MainThread:3668][task_id:new_logger][ex_data.py:34][INFO][ex_web_data :<ex_data.ex_web_data object at 0x03FA4790>: __del__() called]
+[2019-01-19 23:51:50][MainThread:3668][task_id:new_logger][db_operation.py:31][INFO][db_ops : <db_operation.db_ops object at 0x0409F530>: __del__ called]
+[2019-01-19 23:51:50][MainThread:3668][task_id:new_logger][functions.py:22][INFO][update_ws_share_holder used 0.10 seconds]
